@@ -3,8 +3,8 @@
     <div class="modal-dialog">
         <div class="modal-content" style="transition:0.2s;">
             <div class="modal-body">
-                <form>
-                    <input type="text" class="heading" name="name" placeholder="Team Name" required>
+                <form method="post">
+                    <input type="text" class="heading" name="name" placeholder="Team Name" maxlength="20" required>
                     <hr/>
                     <div class="form-group">
                         <div class="team-member-list">
@@ -28,10 +28,10 @@
     <div class="modal-dialog">
         <div class="task-container modal-content" style="transition:0.2s;">
             <div class="modal-body">
-                <form>
-                    <input type="text" class="heading" name="title" placeholder="Title" required>
+                <form method="post">
+                    <input type="text" class="heading" name="title" placeholder="Title" maxlength="20" required>
                     <hr/>
-                    <textarea rows="5" class="body lead" name="description" placeholder="Description" required></textarea>
+                    <textarea rows="5" class="body lead" name="description" placeholder="Description"></textarea>
                     <?php if($task_type == 'team'): ?>
                     <div class="form-group">
                         <div class="task-actor-list">
@@ -64,7 +64,8 @@
                         </button>
                         <?php endforeach; ?>
                         <input type="hidden" name="color" value="#ffffff" />
-                        <button type="button" id="taskSubmit" class="btn btn-link pull-right" data-dismiss="modal"><i class="fa fa-floppy-o fa-2x"></i></button>
+                        <button type="submit" id="taskSubmit" class="btn btn-link pull-right"><i class="fa fa-floppy-o fa-2x"></i></button>
+                        <button type="button" id="taskClose" style="display:none;" data-dismiss="modal">
                         <button type="button" class="btn btn-link pull-right" data-target="#createTaskSetting" data-toggle="collapse"><i class="fa fa-cog fa-2x"></i></button>
                     </div>
                 </form>
@@ -80,19 +81,14 @@
             <div class="modal-body">
                 <form id="taskViewForm">
                     <div class="dropdown">
-                        <a class="btn btn-settings pull-right" data-toggle="dropdown" ><i class="fa fa-ellipsis-v" aria-hidden="false"></i></a>
-                        <div class="dropdown-content dropdown-menu dropdown-menu-right">
-                            <a class="task-edit" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit Task</a>
-                            <a href="#" class="task-mark-done" data-dismiss="modal">Mark as Done</a>
+                        <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style="padding:5px 15px;"><span class="fa fa-ellipsis-v" aria-hidden="false"></span></button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-item"><a class="task-edit" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit Task</a></div>
+                            <div class="dropdown-item"><a href="#" class="task-mark-done" data-dismiss="modal">Mark as Done</a></div>
                         </div>
                     </div>
                     
                     <h1 id="title" class="heading"><b></b></h1>
-<!--
-                    <h4 style="display:inline-block;"><b>Contributors: </b>
-                        <div class="task-actor-list" style="display:inline-block;"></div>
-                    </h4>
--->
                     <textarea id="description" class="body lead" disabled></textarea>
                     <?php if($task_type == 'team'): ?>
                     <h4 style="display:inline-block;"><b>Contributors: </b>
@@ -162,7 +158,7 @@
     <div class="modal-dialog">
         <div class="modal-content" style="transition:0.2s;">
             <div class="modal-body">
-                <form>
+                <form method="post">
                     <input type="text" class="heading" name="title" placeholder="Title" required>
                     <hr/>
                     <textarea rows="5" class="body lead" name="description" placeholder="Description" required></textarea>

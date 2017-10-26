@@ -134,7 +134,7 @@ $.fn.displayMember = function(items, edit = false) {
         if(edit) {
 
             $('.team-member-list').find('.team-member').before(
-                `<span class="label label-default">${item['first_name']} ${item['last_name']} <a class="team-member-remove" data-value="${item['email_address']}">&times;</a></span>`
+                `<span class="badge badge-default">${item['first_name']} ${item['last_name']} <a class="team-member-remove" data-value="${item['email_address']}">&times;</a></span>`
             );
             $('.team-member-list').parent().append(
                 `<input type="hidden" name="members[]" value="${item['email_address']}" />`
@@ -142,7 +142,7 @@ $.fn.displayMember = function(items, edit = false) {
         } else
 
             $('.team-member-list').append(
-                `<span class="label label-default">${item['first_name']} ${item['last_name']}</span>`
+                `<span class="badge badge-default">${item['first_name']} ${item['last_name']}</span>`
             );
     });
 };
@@ -280,9 +280,9 @@ $.fn.displayTask = function(type, items, column = 3) {
             break;
 
         case 'team':
-            $containers.push($('#todoPanel>.row'));
-            $containers.push($('#doingPanel>.row'));
-            $containers.push($('#donePanel>.row'));
+            $containers.push($('#todoPanel>.panel-content'));
+            $containers.push($('#doingPanel>.panel-content'));
+            $containers.push($('#donePanel>.panel-content'));
             column = 2;
             break;
     }
@@ -294,7 +294,7 @@ $.fn.displayTask = function(type, items, column = 3) {
         
         $.each(items, function(j, item) {
             
-            var actorsAppend = "<strong>Contributors</strong><br/>";
+            var actorsAppend = "<strong>Contributor</strong><br/>";
 
             if(item['actors'].length) {
 
@@ -338,7 +338,7 @@ $.fn.displayTask = function(type, items, column = 3) {
             }
         });
 
-        if($container.is('#todoPanel>.row')) {
+        if($container.is('#todoPanel>.panel-content')) {
 
             $container.append(
                 `<div class="col-md-${colNumber}">
