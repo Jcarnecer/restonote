@@ -76,58 +76,89 @@
 
 <!-- Task View Modal -->
 <div id="taskViewModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="task-container modal-content" style="transition:0.2s;">
             <div class="modal-body">
-                <form id="taskViewForm">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style="padding:5px 15px;"><span class="fa fa-ellipsis-v" aria-hidden="false"></span></button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <div class="dropdown-item"><a class="task-edit" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit Task</a></div>
-                            <div class="dropdown-item"><a href="#" class="task-mark-done" data-dismiss="modal">Mark as Done</a></div>
-                        </div>
-                    </div>
-                    
-                    <h1 id="title" class="heading"><b></b></h1>
-                    <textarea id="description" class="body lead" disabled></textarea>
-                    <?php if($task_type == 'team'): ?>
-                    <h4 style="display:inline-block;"><b>Contributors: </b>
-                        <div class="task-actor-list" style="display:inline-block;"></div>
-                    </h4>
-                    <?php endif; ?>
-                    <hr/>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5 id="date"><b>Due Date: </b><span class="body"></span></h5>
-                        </div>
-                        <div class="col-md-6">
-                            <h5 id="countdown" class="body"></h5>
-                        </div>
-                    </div>
-                    <div>
-                        <h5 style="display:inline-block;"><b>Tags: </b>
-                            <div class="task-tag-list" style="display:inline-block;"></div>
-                        </h5>
-                    </div>
-                    <hr/>
-                    <div class="form-group">
-                        <span class="task-note-label">Notes</span>
-                    </div>
-                    <div class="row task-note-create">
-                        <div class="col-md-2">
-                            <i class="fa fa-user-circle fa-3x task-note-user"></i>
-                        </div>
-                        <div class="col-md-10">
-                            <div class="task-note-box">
-                                <textarea class="task-note" rows="2"></textarea>
+                <div class="container">
+                    <form id="taskViewForm">
+                        <div class="d-flex justify-content-between bd-highlight mb-3">
+                            <div class="p-2 bd-highlight">
+                                <button type="button" class="task-edit btn btn-info" data-target="#taskModifyModal" data-toggle="modal" data-dismiss="modal">
+                                    <i class="fa fa-pencil"></i> Edit Task
+                                </button>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <?php if($task_type == 'team'): ?>
+                                <div class="container-fluid">
+                                    <p></p>
+                                </div>
+                                <!--
+    <h4 style="display:inline-block;"><b>Contributors: </b>
+    <div class="task-actor-list" style="display:inline-block;"></div>
+    </h4>
+    -->
+                                <?php endif; ?>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <div class="dropdown">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 5px; margin: 5px;">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style="padding:5px 15px; font-size: 30px; color: inherit;"><i class="fa fa-ellipsis-h" aria-hidden="false"></i></button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        <div class="dropdown-item"><a href="#" class="task-mark-done" data-dismiss="modal">Mark as Done</a></div>
+                                    </div>        
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row task-note-list">
+                        <hr>
+                        <div class="laman-shiz">
+                            <h1 id="title" class="heading"><b></b></h1>
+                            <textarea id="description" class="body lead" disabled></textarea>
+                            <?php if($task_type == 'team'): ?>
+                            <h4 style="display:inline-block;"><b>Contributors: </b>
+                                <div class="task-actor-list" style="display:inline-block;"></div>
+                            </h4>
+                            <?php endif; ?>
+                            
+                            <hr/>
+                            <div class="form-group">
+                                <span class="task-note-label">Notes</span>
+                            </div>
+                            <div class="row task-note-create">
+                                <div class="col-md-2">
+                                    <i class="fa fa-user-circle fa-3x task-note-user"></i>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="task-note-box">
+                                        <textarea class="task-note" rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row task-note-list">
 
-                    </div>
-                    <input type="hidden" name="notes" />
-                </form>
+                            </div>
+                            <input type="hidden" name="notes" />    
+                        </div>
+<!--                        <div class="vertical-line"></div>-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="kanan-shiz">
+                                    <div class="kanan">
+                                       <ul class="date-shiz">
+                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Due Date"><p id="date"><i class="fa fa-calendar" style=" font-size: 40px; padding-right: 40px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
+                                           <hr>
+                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Countdown"><p id="countdown"><i class="fa fa-clock-o" style="font-size: 40px; padding-right: 30px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
+                                           <hr>
+                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Tags"><i class="fa fa-tags" style="font-size: 40px; padding-right: 30px;" aria-hidden="true"></i><div class="task-tag-list" style="display:inline-block;"></div></a></li>
+                                           <hr>
+                                       </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

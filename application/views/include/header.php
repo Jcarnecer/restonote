@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Slabo+27px">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" >
 
         <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/flavored-reset-and-normalize.css'); ?>" />
