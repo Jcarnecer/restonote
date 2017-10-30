@@ -146,11 +146,11 @@
                                 <div class="kanan-shiz">
                                     <div class="kanan">
                                        <ul class="date-shiz">
-                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Due Date"><p id="date"><i class="fa fa-calendar" style=" font-size: 40px; padding-right: 40px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
+                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Due Date"><p id="date"><i class="fa fa-calendar" style=" font-size: 40px; padding-right: 40px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
                                            <hr>
-                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Countdown"><p id="countdown"><i class="fa fa-clock-o" style="font-size: 40px; padding-right: 30px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
+                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Countdown"><p id="countdown"><i class="fa fa-clock-o" style="font-size: 40px; padding-right: 30px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
                                            <hr>
-                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Tags"><i class="fa fa-tags" style="font-size: 40px; padding-right: 30px;" aria-hidden="true"></i><div class="task-tag-list" style="display:inline-block;"></div></a></li>
+                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Tags"><i class="fa fa-tags" style="font-size: 40px; padding-right: 30px;" aria-hidden="true"></i><div class="task-tag-list" style="display:inline-block;"></div></a></li>
                                            <hr>
                                        </ul>
                                     </div>
