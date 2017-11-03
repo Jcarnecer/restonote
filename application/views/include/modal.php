@@ -64,7 +64,7 @@
                         </button>
                         <?php endforeach; ?>
                         <input type="hidden" name="color" value="#ffffff" />
-                        <button type="submit" id="taskSubmit" class="btn btn-link pull-right"><i class="fa fa-floppy-o fa-2x"></i></button>
+                        <button type="submit" class="btn btn-link pull-right"><i class="fa fa-floppy-o fa-2x"></i></button>
                         <button type="button" id="taskClose" style="display:none;" data-dismiss="modal"></button>
                         <button type="button" class="btn btn-link pull-right" data-target="#createTaskSetting" data-toggle="collapse"><i class="fa fa-cog fa-2x"></i></button>
                     </div>
@@ -89,6 +89,14 @@
                                 </div>
                                 <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Contributors" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i>
                                     <div class="task-actor-list" style="display:inline-block;"></div>
+                                </a>
+                                <?php endif; ?>
+                                <?php if($task_type == 'personal'): ?>
+                                <div class="container-fluid">
+                                    <p></p>
+                                </div>
+                                <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Assigned to" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    <div style="display:inline-block;"> <?= $user_name ?></div>
                                 </a>
                                 <?php endif; ?>
                             </div>
