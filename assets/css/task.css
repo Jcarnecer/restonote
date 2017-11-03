@@ -2,10 +2,6 @@ html, body {
     
     height: 100%;
 }
-.container{
-    margin: 20px auto;
-}
-
 
 .main-content {
     height: 100%;
@@ -29,6 +25,11 @@ html, body {
     width: 70%;
     float: left;
     padding-right: 30px;
+}
+
+.laman-shiz1{
+    border: 1px;
+    
 }
 
 /* Right Column for Modal*/
@@ -206,14 +207,15 @@ html, body {
 
 /* View_task_modal */
 .heading {
-    font-weight: 800;
+    font-weight: 750;
     font-size: 32px;
 }
 
 
 .body {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 20px;
+    text-transform: capitalize;
 }
 
 
