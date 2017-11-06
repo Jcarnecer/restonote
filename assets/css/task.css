@@ -3,7 +3,6 @@ html, body {
     height: 100%;
 }
 
-
 .main-content {
     height: 100%;
 }
@@ -15,7 +14,49 @@ html, body {
     margin: 0;
 }
 
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
 
+/* Left Column for Modal*/
+.laman-shiz{
+    width: 70%;
+    float: left;
+    padding-right: 30px;
+}
+
+.laman-shiz1{
+    border: 1px;
+    
+}
+
+/* Right Column for Modal*/
+.kanan-shiz{
+    float: left;
+    padding-right: 10px;
+}
+
+.kanan{
+    margin-bottom: 50px;
+    float: right;
+/*    margin-left: -20px;*/
+}
+.vertical-line{
+    border-left: 1px solid #95a5a6;
+    height: 400px;
+    right:  270px;
+    position: absolute;
+    margin-left: -30px;
+    top: auto;
+    bottom: auto;
+}
+
+.date-shiz{
+    display: inline-block;
+/*    margin-left: 30px;*/
+}
 /* Task Board */
 .task-tag-board {
     margin: 10px;
@@ -166,7 +207,7 @@ html, body {
 
 /* View_task_modal */
 .heading {
-    font-weight: 800;
+    font-weight: 750;
     font-size: 32px;
 }
 
@@ -174,6 +215,7 @@ html, body {
 .body {
     font-weight: 400;
     font-size: 20px;
+/*    text-transform: capitalize;*/
 }
 
 
@@ -274,8 +316,8 @@ html, body {
     font-size: 32px;
     border-style: hidden;
     outline: none;
+    padding: 10px;
 }
-
 
 /* Add Task Search */
 .addTaskSearch{

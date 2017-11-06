@@ -81,7 +81,7 @@ $(function () {
             $('#taskViewModal').find('[id="title"]').html(data['title']);
             $('#taskViewModal').find('[id="description"]').html(data['description']);
             $('#taskViewModal').find('[id="date"] span').html(data['due_date']);
-            $('#taskViewModal').find('[id="countdown"]').html(data['remaining_days']);
+            $('#taskViewModal').find('[id="countdown"] span').html(data['remaining_days']);
             $('#taskViewModal').find('.task-tag-list').html('');
             $('#taskViewModal').find('.task-actor-list').html('');
             $('#taskViewModal').find('.modal-content').css('background-color', data['color']);

@@ -251,12 +251,10 @@ $.fn.displayNote = function(items) {
     $.each(items, function(i, item){
 
         $(document).getUser(item['user_id']).always(function(data) {
-
             $('.task-note-list').append(
                 `<div class="col-md-2 task-note-list-item">
-                    <i class="fa fa-user-circle fa-2x task-note-user" 
+                    <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${item['user_id']}.png" 
                     data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${data['first_name'] + ' ' + data['last_name']}">
-                    </i>
                     </div>
                 </div>
                 <div class="col-md-10 card card-sm task-note-text task-note-list-item">
