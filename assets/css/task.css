@@ -215,7 +215,7 @@ html, body {
 .body {
     font-weight: 400;
     font-size: 20px;
-    text-transform: capitalize;
+/*    text-transform: capitalize;*/
 }
 
 
