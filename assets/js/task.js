@@ -209,9 +209,8 @@ $(function () {
                 
                 $noteInput.closest('form').find('.task-note-list').append(
                     `<div class="col-md-2 task-note-list-item">
-                        <i class="fa fa-user-circle fa-2x task-note-user" 
-                        data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${data['first_name'] + ' ' + data['last_name']}">
-                        </i>
+                        <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${getUserId()}.png" 
+                    data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${data['first_name'] + ' ' + data['last_name']}">
                         </div>
                     </div>
                     <div class="col-md-10 card card-sm task-note-text task-note-list-item">

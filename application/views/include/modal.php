@@ -132,7 +132,7 @@
                        </div>
                         <hr/>
                         <div class="form-group">
-                            <span class="task-note-label">Notes</span>
+                            <span class="task-note-label">Comments</span>
                         </div>
                         <div class="row task-note-create">
                            <div class="container">
@@ -141,7 +141,7 @@
                                </div>
                                <div class="col-md-10">
                                    <div class="task-note-box">
-                                       <textarea class="task-note" rows="2" placeholder="Add Notes"></textarea>
+                                       <textarea class="task-note" rows="2" placeholder="Add Comments"></textarea>
                                    </div>
                                </div>  
                            </div>
