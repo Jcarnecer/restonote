@@ -12,7 +12,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Slabo+27px">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" >
-
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower">
+        
         <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/flavored-reset-and-normalize.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css'); ?>" />
@@ -21,6 +22,8 @@
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/paper.css'); ?>" />     
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/kanban.css'); ?>" />     
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/task.css'); ?>" />     
+        <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/cork.css'); ?>" />
+        
     </head>
     <body>
 
@@ -50,8 +53,8 @@
                 
                 <li class="">
                     <a class="" href="<?= base_url('personal'); ?>">
-                        <i class="fa fa-tasks" aria-hidden="true"></i>
-                        <span>Personal Task</span>
+                        <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span>Bulletin Board</span>
                     </a>    
                 </li>
                 
@@ -114,4 +117,4 @@
 
                 </nav>
             </div>
-            <div class="inner-content paper">
+            
