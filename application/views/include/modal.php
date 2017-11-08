@@ -1,27 +1,3 @@
-<!-- Team Create Modal -->
-<div id="teamModifyModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="transition:0.2s;">
-            <div class="modal-body">
-                <form method="post">
-                    <input type="text" class="heading" name="name" placeholder="Team Name" maxlength="20" required>
-                    <hr/>
-                    <div class="form-group">
-                        <div class="team-member-list">
-                            <span class="team-member-label">Members: </span>
-                            <input type="text" class="team-member" placeholder="Add Member's Email Address" size="32" style="display:inline-block;"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" id="teamSubmit" class="btn btn-primary pull-right" data-dismiss="modal"><i class="fa fa-users"></i> Create Team</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Task Modify Modal -->
 <div id="taskModifyModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -32,14 +8,6 @@
                     <input type="text" class="heading" name="title" placeholder="Title" maxlength="20" required>
                     <hr/>
                     <textarea rows="5" class="body lead" name="description" placeholder="Description"></textarea>
-                    <?php if($task_type == 'team'): ?>
-                    <div class="form-group">
-                        <div class="task-actor-list">
-                            <label style="display:inline-block;">Contributors: </label>
-                            <input type="text" class="task-actor" placeholder="Add Contributor" style="display:inline-block;"/>
-                        </div>
-                    </div>
-                    <?php endif; ?>
                     <div id="createTaskSetting" class="collapse">
                         <!-- <hr/> -->
                         <div class="form-group">
@@ -83,16 +51,7 @@
                 <form id="taskViewForm">
                     <div class="d-flex justify-content-between bd-highlight mb-3">
                         <div class="p-1 bd-highlight">
-                            <?php if($task_type == 'team'): ?>
                             <div class="container-fluid">
-                                <p></p>
-                            </div>
-                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Contributors" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i>
-                                <div class="task-actor-list" style="display:inline-block;"></div>
-                            </a>
-                            <?php endif; ?>
-                            <div class="container-fluid">
-                                <?php if($task_type == 'personal'): ?>
                                 <div class="container-fluid">
                                     <p></p>
                                 </div>
@@ -100,7 +59,6 @@
                                     <img src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle avatar" aria-hidden="true" >
                                     <div style="display:inline-block;"> <h1 id="title" class="heading"></h1></div>
                                 </a>
-                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="p-1 bd-highlight">
@@ -152,7 +110,7 @@
                         <div class="row task-note-list">
                             
                         </div>
-                        <input type="hidden" name="notes" />    
+                        <input type="hidden" name="comments" />    
                     </div>
 <!--                        <div class="vertical-line"></div>-->
                     <div class="container">

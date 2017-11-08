@@ -4,25 +4,15 @@ $(function () {
     var $kanbanPanel = [$('#todoPanel>.row'), $('#doingPanel>.row'), $('#donePanel>.row')];
     var column = 0;
 
-    
-    switch(getTaskType()) {
-        
-        case 'personal':
-            $container = $('#taskTileList')
-            column = 4;
-            break;
 
-        case 'team':
-            $container = $('#todoPanel>.row');
-            column = 2;
-            break;
-    }
+    $container = $('#taskTileList')
+    column = 4;
 
 
     // Initialize
-    $(document).getTask().done(function(data) {
+    $(document).getCard().done(function(data) {
 
-        if(data.length == 0 && getTaskType() == 'personal') {
+        if(data.length == 0) {
 
             $('#taskTileList').html(
                 `<h1 class="no-task-text">
@@ -31,7 +21,7 @@ $(function () {
             );
         } else {
 
-            $(document).displayTask(getTaskType(), data, column);
+            $(document).displayCard(data, column);
         }
     });
 
@@ -51,16 +41,16 @@ $(function () {
         $('#taskModifyModal').find('form').attr('id', 'taskUpdateForm');
         $('#taskModifyModal').find('button[type="submit"]').attr('form', 'taskUpdateForm');
         
-        $(document).getTask($(this).attr('data-value')).done(function (data) {
+        $(document).getCard($(this).attr('data-value')).done(function (data) {
 
             $('#taskModifyModal').find('form').attr('data-value', data['id']);
             $('#taskModifyModal').find('[name="title"]').val(data['title']);
-            $('#taskModifyModal').find('[name="description"]').val(data['description']);
+            $('#taskModifyModal').find('[name="body"]').val(data['body']);
             $('#taskModifyModal').find('[name="date"]').val(data['due_date']);
             $('#taskModifyModal').find('[name="color"]').val(data['color']);
 
             $(document).displayTag(data['tags'], true);
-            $(document).displayActor(data['actors'], true);
+            $(document).displayViewer(data['viewers'], true);
             
             $('#taskModifyModal').find('.modal-content').css('background-color', data['color']);
             $('#taskModifyModal').find('.btn-color').find('i').removeClass('fa fa-check fa-lg');
@@ -74,12 +64,12 @@ $(function () {
         $('#taskViewModal').find('form')[0].reset();
         $('#taskViewModal').find('.task-note-list').html('');
 
-        $(document).getTask($(this).attr('data-value')).done(function (data) {
+        $(document).getCard($(this).attr('data-value')).done(function (data) {
 
             $('#taskViewModal').find('.dropdown a').attr('data-value', data['id']);
             $('#taskViewModal').find('form').attr('data-value', data['id']);
             $('#taskViewModal').find('[id="title"]').html(data['title']);
-            $('#taskViewModal').find('[id="description"]').html(data['description']);
+            $('#taskViewModal').find('[id="description"]').html(data['body']);
             $('#taskViewModal').find('[id="date"] span').html(data['due_date']);
             $('#taskViewModal').find('[id="countdown"] span').html(data['remaining_days']);
             $('#taskViewModal').find('.task-tag-list').html('');
@@ -93,14 +83,14 @@ $(function () {
 
                 $('#taskViewModal').find('.task-tag-list').html('None');
 
-            if(data['actors'].length != 0) 
+            if(data['viewers'].length != 0) 
             
-                $(document).displayActor(data['actors']);
+                $(document).displayViewer(data['viewers']);
             else
 
                 $('#taskViewModal').find('.task-actor-list').html('None');
 
-            $(document).displayNote(data['notes']);
+            $(document).displayComment(data['comments']);
         });
     });
 
@@ -108,9 +98,9 @@ $(function () {
     // Search
     $(document).on('input', '#taskSearch', function () {
 
-        $(document).getTask().done(function(data){
+        $(document).getCard().done(function(data){
 
-            $(document).searchTask(data, $('#taskSearch').val());
+            $(document).searchCard(data, $('#taskSearch').val());
         });
     });
 
@@ -168,14 +158,14 @@ $(function () {
                 
                 if(result['exist']) {
                     
-                    if(!$(this).closest('.task-actor-list').parent().has(`input[name="actors[]"][value="${$(this).val().toLowerCase()}"]`).length){
+                    if(!$(this).closest('.task-actor-list').parent().has(`input[name="viewers[]"][value="${$(this).val().toLowerCase()}"]`).length){
 
                         $(this).before(
                             `<span class="badge badge-default">${result['first_name'] + ' ' + result['last_name']} <a class="task-actor-remove" data-value="${$(this).val().toLowerCase()}">&times;</a></span>`
                         );
 
                         $(this).closest('.task-actor-list').parent().append(
-                            `<input type="hidden" name="actors[]" value="${$(this).val().toLowerCase()}" />`
+                            `<input type="hidden" name="viewers[]" value="${$(this).val().toLowerCase()}" />`
                         );
                     }
                 } else {
@@ -193,12 +183,12 @@ $(function () {
 
     $(document).on('click', '.task-actor-remove', function() {
 
-        $(this).closest('.task-actor-list').parent().find(`input[name="actors[]"][value="${$(this).attr('data-value')}"]`).remove();
+        $(this).closest('.task-actor-list').parent().find(`input[name="viewers[]"][value="${$(this).attr('data-value')}"]`).remove();
         $(this).parent().remove();
     });
 
 
-    // Notes
+    // Comments
     $(document).on('keypress', '.task-note', function (e) {
 
         if(e.which == 13) {
@@ -210,17 +200,17 @@ $(function () {
                 $noteInput.closest('form').find('.task-note-list').append(
                     `<div class="col-md-2 task-note-list-item">
                         <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${getUserId()}.png" 
-                    data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${data['first_name'] + ' ' + data['last_name']}">
+                    data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="Just now">
                         </div>
                     </div>
                     <div class="col-md-10 card card-sm task-note-text task-note-list-item">
-                        ${$noteInput.val()}
+                       <a href="#">${data['first_name'] + ' ' + data['last_name']}</a>${' ' + $noteInput.val()}
                     </div>`
                 );
             }).always(function() {
                 
-                $noteInput.closest('form').find('input[name="notes"]').val($noteInput.val());
-                $(document).postTaskNote($noteInput.closest('form').serialize(), $noteInput.closest('form').attr('data-value'));
+                $noteInput.closest('form').find('input[name="comments"]').val($noteInput.val());
+                $(document).postCardComment($noteInput.closest('form').serialize(), $noteInput.closest('form').attr('data-value'));
                 $noteInput.val('');
             }); 
 
@@ -240,21 +230,21 @@ $(function () {
             
             if($(this).is('#taskCreateForm')) {
                 
-                $(document).postTask(task).always(function() {
+                $(document).postCard(task).always(function() {
                     
-                    $(document).getTask().done(function(data) {
+                    $(document).getCard().done(function(data) {
                         
-                        $(document).displayTask(getTaskType(), data);
+                        $(document).displayCard(data);
                         $(document).resetForm();
                     });
                 });
             } else if($(this).is('#taskUpdateForm')) {
                 
-                $(document).postTask(task, $(this).attr('data-value')).always(function(data) {
+                $(document).postCard(task, $(this).attr('data-value')).always(function(data) {
                     
-                    $(document).getTask().always(function(data){
+                    $(document).getCard().always(function(data){
                         
-                        $(document).displayTask(getTaskType(), data);
+                        $(document).displayCard(data);
                         $(document).resetForm();
                     });
                 });
@@ -294,9 +284,9 @@ $(function () {
             url: `${baseUrl}api/done/${$(this).attr('data-value')}`,
         }).done(function(data) {
 
-            $(document).getTask().done(function(data){
+            $(document).getCard().done(function(data){
 
-                $(document).displayTask(getTaskType(), data);
+                $(document).displayCard(data);
             });
         });
     });

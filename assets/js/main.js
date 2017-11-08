@@ -1,19 +1,12 @@
-const baseUrl = window.location.origin + '/task/';
+const baseUrl = window.location.origin + '/note/';
 var userId = null;
 var authorId = null;
-var taskType = null;
 
 
 function setAuthorId(id) { authorId = id; }
 
 
 function getAuthorId() { return authorId; }
-
-
-function setTaskType(type) { taskType = type; }
-
-
-function getTaskType() { return taskType; }
 
 
 function setUserId(id) { userId = id; }
@@ -34,144 +27,50 @@ $.fn.getUser = function(userId) {
 }
 
 
-$.fn.getTask = function(taskId = null) {
+$.fn.getCard = function(cardID = null) {
 
     return $.ajax({
 
         type: 'GET',
-        url: `${baseUrl}api/task/${getAuthorId()}` + (taskId != null ? `/${taskId}` : ''),
+        url: `${baseUrl}api/card/${getAuthorId()}` + (cardID != null ? `/${cardID}` : ''),
         dataType: 'json'
     });
 };
 
 
-$.fn.postTask = function(details, taskId = null) {
+$.fn.postCard = function(details, cardID = null) {
 
     return $.ajax({
 
         type: 'POST',
-        url: `${baseUrl}api/task/${getAuthorId()}` + (taskId != null ? `/${taskId}` : ''),
+        url: `${baseUrl}api/card/${getAuthorId()}` + (cardID != null ? `/${cardID}` : ''),
         data: details,
         dataType: 'json'
     });
 };
 
 
-$.fn.getTaskNote = function(taskId) {
+$.fn.getCardComment = function(cardID) {
 
     return $.ajax({
 
         type: 'GET',
-        url: `${baseUrl}api/note/${taskId}`,
+        url: `${baseUrl}api/comment/${cardID}`,
         dataType: 'json'
     });
 }
 
 
-$.fn.postTaskNote = function(details, taskId) {
+$.fn.postCardComment = function(details, cardID) {
 
     return $.ajax({
 
         type: 'POST',
-        url: `${baseUrl}api/note/${taskId}`,
+        url: `${baseUrl}api/comment/${cardID}`,
         data: details,
         dataType: 'json'
     })
 }
-
-
-$.fn.getTeam = function(teamId = null) {
-
-    return $.ajax({
-
-        type: 'GET',
-        url: `${baseUrl}api/team` + (teamId != null ? `/${teamId}` : ''),
-        dataType: 'json'
-    });
-};
-
-
-$.fn.postTeam = function(details, teamId = null) {
-
-    return $.ajax({
-
-        type: 'POST',
-        url: `${baseUrl}api/team` + (teamId != null ? `/${teamId}` : ''),
-        dataType: 'json',
-        data: details
-    });
-};
-
-
-$.fn.changeColumn = function(details, taskId) {
-
-    return $.ajax({
-
-        type: 'POST',
-        url: `${baseUrl}api/change_column/${taskId}`,
-        datType: 'json',
-        data: details
-    });
-}
-
-
-$.fn.getUserTeamTask = function(userId) {
-
-    return $.ajax({
-
-        type: 'GET',
-        url: `${baseUrl}api/get_user_team_task/${userId}`,
-        dataType: 'json'
-    });
-}
-
-
-// Team
-$.fn.displayMember = function(items, edit = false) {
-
-    $.each(items, function(i, item) {
-
-        if(edit) {
-
-            $('.team-member-list').find('.team-member').before(
-                `<span class="badge badge-default">${item['first_name']} ${item['last_name']} <a class="team-member-remove" data-value="${item['email_address']}">&times;</a></span>`
-            );
-            $('.team-member-list').parent().append(
-                `<input type="hidden" name="members[]" value="${item['email_address']}" />`
-            );
-        } else
-
-            $('.team-member-list').append(
-                `<span class="badge badge-default">${item['first_name']} ${item['last_name']}</span>`
-            );
-    });
-};
-
-
-$.fn.validateMember = function(value) {
-
-    return $.ajax({
-
-        async: false,
-        type: 'POST',
-        url: `${baseUrl}api/validate_member`,
-        data: {
-            email: value
-        },
-        dataType: 'json'
-    }).responseJSON;
-};
-
-
-$.fn.leaveTeam = function(teamId, userId) {
-
-    return $.ajax({
-
-        type: 'POST',
-        url: `${baseUrl}api/leave_team/${teamId}`,
-        dataType: 'json'
-    });
-};
 
 
 // Task
@@ -186,12 +85,8 @@ $.fn.resetForm = function() {
     // $('#taskModifyModal').find('.btn-color').find('i').removeClass('fa fa-check fa-lg');
     // $('#taskModifyModal').find(`button[data-value="#ffffff"] i`).addClass('fa fa-check fa-lg');
 
-    if(getTaskType() == 'personal')
     
-        $('#personalCreate').find('form')[0].reset();
-    else if(getTaskType() == 'team')
-        
-        $('#taskModifyModal').find('form')[0].reset();
+    $('#personalCreate').find('form')[0].reset();
 
     $('.task-container').find('.task-actor-list').siblings('input').remove();
     $('.task-container').find('.task-actor-list').find('span.badge').remove();
@@ -203,7 +98,7 @@ $.fn.resetForm = function() {
 };
 
 
-$.fn.displayActor = function(items, edit = false) {
+$.fn.displayViewer = function(items, edit = false) {
 
     $.each(items, function(i, item) {
 
@@ -214,7 +109,7 @@ $.fn.displayActor = function(items, edit = false) {
             );
 
             $('.task-actor-list').parent().append(
-                `<input type="hidden" name="actors[]" value="${item['email_address']}" />`
+                `<input type="hidden" name="viewers[]" value="${item['email_address']}" />`
             );
         } else
 
@@ -246,19 +141,18 @@ $.fn.displayTag = function(items, edit = false) {
 };
 
 
-$.fn.displayNote = function(items) {
+$.fn.displayComment = function(items) {
 
     $.each(items, function(i, item){
-
-        $(document).getUser(item['user_id']).always(function(data) {
+        $(document).getUser(item['author']).always(function(data) {
             $('.task-note-list').append(
                 `<div class="col-md-2 task-note-list-item">
-                    <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${item['user_id']}.png" 
-                    data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${data['first_name'] + ' ' + data['last_name']}">
+                    <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${item['author']}.png" 
+                    data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${item['created_at']}">
                     </div>
                 </div>
                 <div class="col-md-10 card card-sm task-note-text task-note-list-item">
-                    ${item['body']}
+                    <a href="#">${data['first_name'] + ' ' + data['last_name']}</a>${' ' + item['body']}
                 </div>`
             );
         });
@@ -266,24 +160,13 @@ $.fn.displayNote = function(items) {
 }
 
 
-$.fn.displayTask = function(type, items, column = 3) {
+$.fn.displayCard = function(items, column = 3) {
     
     var $containers = [];
     var status = [1, 4, 2];
 
-    switch(type) {
-        case 'personal':
-            $containers.push($('#taskTileList'));
-            column = 4;
-            break;
-
-        case 'team':
-            $containers.push($('#todoPanel>.panel-content'));
-            $containers.push($('#doingPanel>.panel-content'));
-            $containers.push($('#donePanel>.panel-content'));
-            column = 2;
-            break;
-    }
+    $containers.push($('#taskTileList'));
+    column = 4;
 
     colNumber = 12/column;
 
@@ -292,19 +175,19 @@ $.fn.displayTask = function(type, items, column = 3) {
         
         $.each(items, function(j, item) {
             
-            var actorsAppend = "<strong>Contributor</strong><br/>";
+            var viewersAppend = "<strong>Contributor</strong><br/>";
 
-            if(item['actors'].length) {
+            if(item['viewers'].length) {
 
-                $.each(item['actors'], function (i, actor) {
-                    actorsAppend = actorsAppend + actor['first_name'] + " " + actor['last_name'] + "<br/>";
+                $.each(item['viewers'], function (i, viewer) {
+                    viewersAppend = viewersAppend + viewer['first_name'] + " " + viewer['last_name'] + "<br/>";
                 });
             } else {
                 
-                actorsAppend = "No Contributor";
+                viewersAppend = "No Contributor";
             }
 
-            var contributorAppend = `data-toggle="popover" data-trigger="hover" data-html="true" data-placement="right" data-content="${actorsAppend}"`;
+            var contributorAppend = `data-toggle="popover" data-trigger="hover" data-html="true" data-placement="right" data-content="${viewersAppend}"`;
 
             if(status[i] == item['status']) {
 
@@ -316,15 +199,8 @@ $.fn.displayTask = function(type, items, column = 3) {
                         draggable="true" ondragstart="drag(event)" 
                         style="background-color:${item['color']};">
 
-                            <div class="container" ${getTaskType() == 'team' ? contributorAppend : ''}>
+                            <div class="container" >
                                 <span class="tile-title">
-                                    ${getTaskType() == 'team' ? 
-                                        item['actors'].length ? 
-                                            item['actors'].length > 1 ? 
-                                                '<i class="fa fa-users"></i>' : 
-                                                '<i class="fa fa-user"></i>' : 
-                                            '<i class="fa fa-user-o"></i>' : 
-                                        ''} 
                                     ${item['title']}
                                 </span>
                             </div>
@@ -352,7 +228,7 @@ $.fn.displayTask = function(type, items, column = 3) {
 };
 
 
-$.fn.searchTask = function(items, keyword) {
+$.fn.searchCard = function(items, keyword) {
 
     $('#taskSearchQuery').html('');
 
