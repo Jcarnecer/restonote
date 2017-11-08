@@ -91,14 +91,17 @@
                                 <div class="task-actor-list" style="display:inline-block;"></div>
                             </a>
                             <?php endif; ?>
-                            <?php if($task_type == 'personal'): ?>
                             <div class="container-fluid">
-                                <p></p>
+                                <?php if($task_type == 'personal'): ?>
+                                <div class="container-fluid">
+                                    <p></p>
+                                </div>
+                                <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Assigned to" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;">
+                                    <img src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle avatar" aria-hidden="true" >
+                                    <div style="display:inline-block;"> <h1 id="title" class="heading"></h1></div>
+                                </a>
+                                <?php endif; ?>
                             </div>
-                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Assigned to" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;"><img  src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle" aria-hidden="true" >
-                                <div style="display:inline-block;"> <?= $user_name ?></div>
-                            </a>
-                            <?php endif; ?>
                         </div>
                         <div class="p-1 bd-highlight">
                             
@@ -124,7 +127,6 @@
                          <div class="row">
                             <div class="col-md-10">
                                <ul>
-                                   <li><h1 id="title" class="heading"><b></b></h1></li>
                                    <li><textarea id="description" class="body lead" disabled></textarea> </li>
                                </ul>
                             </div>

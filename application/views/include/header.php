@@ -110,10 +110,12 @@
                     </div>
                     <?php endif; ?> -->
 
-                    <a class="navbar-brand ml-auto text-right" href="#" data-toggle="popover" data-placement="bottom"  data-content="<?= $email ?>" data-trigger="hover">
+                    <div class="navbar-brand ml-auto text-right" >
                         <!-- <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i> -->
-                        <img class="img-fluid w-25 mr-auto" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" alt="<?= $email ?>">
-                    </a>
+                        <a href="#" data-toggle="popover" data-placement="bottom"  data-content="<?= $email ?>" data-trigger="hover" style="padding-bottom: 10px;">
+                            <img class="img-fluid w-25 mr-auto" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" alt="<?= $email ?>">
+                        </a>
+                    </div>
 
                 </nav>
             </div>
