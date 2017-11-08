@@ -37,12 +37,7 @@
 
             <ul class="sidebar-menu">		
 
-                <!-- <li class="">
-                    <a class="task-create" href="#taskModifyModal" data-toggle="modal">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        <span>Add Task</span>
-                    </a>
-                </li> -->
+                
 
                 <li class="">
                     <a class="task-create" href="#searchTaskModal" data-toggle="modal">
@@ -50,28 +45,6 @@
                         <span>Search</span>
                     </a>
                 </li>
-                
-               <!--  <li class="">
-                    <a class="" href="<?= base_url('personal'); ?>">
-                        <i class="fa fa-bullhorn" aria-hidden="true"></i>
-                        <span>Bulletin Board</span>
-                    </a>    
-                </li>
-                
-                <li class="sub-menu">
-                    <a data-toggle="collapse" href="#UIElementsSub1" aria-expanded="false" aria-controls="UIElementsSub1" >
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        <span>Team Task</span>
-                    </a>
-                    <ul class="sub collapse" id="UIElementsSub1">
-                        <?php foreach($teams as $team): ?>
-                        <li><a href="<?= base_url('team/' . $team->id); ?>"><?=$team->name?></a></li>
-                        <?php endforeach; ?>
-                        <li>
-                            <a class="team-create" href="#teamModifyModal" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Create Team</a>
-                        </li>
-                    </ul>
-                </li> -->
                 
                 <li class="">
                     <a class="" href="http://localhost/main/users/logout">
@@ -93,22 +66,6 @@
                         <span></span>
                     </div>
                     <a class="navbar-brand" href="<?= base_url('tasks'); ?>">Task</a>
-                    
-                    <!-- <?php if($task_type == 'team'): ?>
-                    <div class="btn-group" role="group" aria-label="Team">
-                        <button id="highlightBtn" type="button" class="btn btn-success navbar-btn">
-                            <i class="fa fa-eye"></i> My Tasks
-                        </button>
-
-                        <button type="button" class="team-edit btn btn-info navbar-btn" data-target="#teamModifyModal" data-toggle="modal" data-value="<?= $team->id; ?>">
-                            <i class="fa fa-edit"></i> Edit Group
-                        </button>
-
-                        <button type="button" class="team-leave btn btn-danger navbar-btn" data-value="<?= $team->id; ?>">
-                            <i class="fa fa-sign-out"></i> Leave Group
-                        </button>
-                    </div>
-                    <?php endif; ?> -->
 
                     <a class="navbar-brand ml-auto text-right" href="#" data-toggle="popover" data-placement="bottom"  data-content="<?= $email ?>" data-trigger="hover">
                         <!-- <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i> -->
