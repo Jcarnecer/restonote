@@ -17,9 +17,9 @@ class Card_model extends CI_Model {
 	public function get($id) {
 		
 		$card 				  = $this->db->get_where('cards', ['id' => $id], 1)->result()[0];
-		$card->comments		  = $this->get_card_comments($card->id);
-		$card->viewers 		  = $this->get_card_viewers($card->id);
-		$card->tags 		  = $this->get_card_tags($card->id);
+		$card->comments		  = $this->get_comments($card->id);
+		$card->viewers 		  = $this->get_viewers($card->id);
+		$card->tags 		  = $this->get_tags($card->id);
 
 		return $card;
 	}
@@ -35,9 +35,9 @@ class Card_model extends CI_Model {
 
 		foreach ($cards as $card) {
 
-			$card->comments 	  = $this->get_card_comments($card->id);
-			$card->viewers 		  = $this->get_card_viewers($card->id);
-			$card->tags 		  = $this->get_card_tags($card->id);
+			$card->comments 	  = $this->get_comments($card->id);
+			$card->viewers 		  = $this->get_viewers($card->id);
+			$card->tags 		  = $this->get_tags($card->id);
 		}
 		
 		return $cards;
@@ -53,19 +53,19 @@ class Card_model extends CI_Model {
 
 
 	# Get card viewers
-	public function get_card_viewers($id = null) {
+	public function get_viewers($id = null) {
 		
 		return $this->db->select('*')
 			->from('users')
-			->join('cards_assignment', 'cards_assignment.user_id = users.id')
-			->where('cards_assignment.card_id', $id)
+			->join('viewers', 'viewers.user_id = users.id')
+			->where('viewers.card_id', $id)
 			->get()
 			->result();
 	}
 
 
 	# Get card Tags
-	public function get_card_tags($id = null) {
+	public function get_tags($id = null) {
 
 		return $this->db->select('name')
 			->from('tags')
@@ -77,16 +77,16 @@ class Card_model extends CI_Model {
 
 
 	# Add card comments
-	public function add_card_comments($card_id, $comment_details) {
+	public function add_comments($card_id, $comment_details) {
 
-		$this->db->insert('card_comments', $comment_details);
+		$this->db->insert('comments', $comment_details);
 	}
 
 
 	# Get card comments
-	public function get_card_comments($card_id) {
+	public function get_comments($card_id) {
 
-		return $this->db->get_where('card_comments', ['card_id' => $card_id])->result();
+		return $this->db->get_where('comments', ['card_id' => $card_id])->result();
 	}
 
 
@@ -94,19 +94,10 @@ class Card_model extends CI_Model {
 	public function insert($card_details) {
 
 		$card_details['status'] = 1;
-		$card_details['created_at'] = date('Y-m-d');
-		$card_details['updated_at'] = date('Y-m-d');
 
 		$this->db->insert('cards', $card_details);
 
 		return $this->db->insert_id();
-	}
-
-
-	# FOR KANBAN BOARD STATUS UPDATE
-	public function update_status($id, $key) {
-
-		return $this->db->update('cards', ['status' => $key, 'completion_date' => date('Y-m-d')], "id = $id");
 	}
 
 
@@ -116,16 +107,16 @@ class Card_model extends CI_Model {
 	}
 
 
-	public function prune_cards($id) {
+	// public function prune_cards($id) {
 		
-		foreach($this->db->get_where('cards', ['user_id' => $id])->result() as $card){
+	// 	foreach($this->db->get_where('cards', ['user_id' => $id])->result() as $card){
 			
-			$this->db->delete('card_comments', 	['card_id' => $card->id]);
-			$this->db->delete('cards_tagging',  ['card_id' => $card->id]);
-		}
+	// 		$this->db->delete('card_comments', 	['card_id' => $card->id]);
+	// 		$this->db->delete('cards_tagging',  ['card_id' => $card->id]);
+	// 	}
 
-		$this->db->delete('cards', ['user_id' => $id]);
-	}
+	// 	$this->db->delete('cards', ['user_id' => $id]);
+	// }
 	
 
 	public function add_viewers($card_id, $users) {
@@ -137,13 +128,13 @@ class Card_model extends CI_Model {
 
 			$new_member_ids = array_column($this->db->select('id')->from('users')->where_in('email_address', $users)->get()->result_array(), 'id');
 			
-		$old_member_ids = array_column($this->db->select('user_id')->from('cards_assignment')->where('card_id', $card_id)->get()->result_array(), 'user_id');
+		$old_member_ids = array_column($this->db->select('user_id')->from('viewers')->where('card_id', $card_id)->get()->result_array(), 'user_id');
 
 		foreach ($new_member_ids as $id) {
 			
 			if(!in_array($id, $old_member_ids)) {
 				
-				$this->db->insert('cards_assignment', [
+				$this->db->insert('viewers', [
 					'card_id' => $card_id,
 					'user_id' => $id
 				]);
@@ -154,7 +145,7 @@ class Card_model extends CI_Model {
 			
 			if(!in_array($id, $new_member_ids)) {
 			
-				$this->db->delete('cards_assignment', [
+				$this->db->delete('viewers', [
 					'card_id' => $card_id,
 					'user_id' => $id
 				]);

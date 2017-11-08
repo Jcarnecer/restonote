@@ -1,4 +1,4 @@
-const baseUrl = window.location.origin + '/task/';
+const baseUrl = window.location.origin + '/note/';
 var userId = null;
 var authorId = null;
 
@@ -27,46 +27,46 @@ $.fn.getUser = function(userId) {
 }
 
 
-$.fn.getTask = function(taskId = null) {
+$.fn.getCard = function(cardID = null) {
 
     return $.ajax({
 
         type: 'GET',
-        url: `${baseUrl}api/task/${getAuthorId()}` + (taskId != null ? `/${taskId}` : ''),
+        url: `${baseUrl}api/card/${getAuthorId()}` + (cardID != null ? `/${cardID}` : ''),
         dataType: 'json'
     });
 };
 
 
-$.fn.postTask = function(details, taskId = null) {
+$.fn.postCard = function(details, cardID = null) {
 
     return $.ajax({
 
         type: 'POST',
-        url: `${baseUrl}api/task/${getAuthorId()}` + (taskId != null ? `/${taskId}` : ''),
+        url: `${baseUrl}api/card/${getAuthorId()}` + (cardID != null ? `/${cardID}` : ''),
         data: details,
         dataType: 'json'
     });
 };
 
 
-$.fn.getTaskNote = function(taskId) {
+$.fn.getCardComment = function(cardID) {
 
     return $.ajax({
 
         type: 'GET',
-        url: `${baseUrl}api/note/${taskId}`,
+        url: `${baseUrl}api/comment/${cardID}`,
         dataType: 'json'
     });
 }
 
 
-$.fn.postTaskNote = function(details, taskId) {
+$.fn.postCardComment = function(details, cardID) {
 
     return $.ajax({
 
         type: 'POST',
-        url: `${baseUrl}api/note/${taskId}`,
+        url: `${baseUrl}api/comment/${cardID}`,
         data: details,
         dataType: 'json'
     })
@@ -98,7 +98,7 @@ $.fn.resetForm = function() {
 };
 
 
-$.fn.displayActor = function(items, edit = false) {
+$.fn.displayViewer = function(items, edit = false) {
 
     $.each(items, function(i, item) {
 
@@ -109,7 +109,7 @@ $.fn.displayActor = function(items, edit = false) {
             );
 
             $('.task-actor-list').parent().append(
-                `<input type="hidden" name="actors[]" value="${item['email_address']}" />`
+                `<input type="hidden" name="viewers[]" value="${item['email_address']}" />`
             );
         } else
 
@@ -141,19 +141,18 @@ $.fn.displayTag = function(items, edit = false) {
 };
 
 
-$.fn.displayNote = function(items) {
+$.fn.displayComment = function(items) {
 
     $.each(items, function(i, item){
-
-        $(document).getUser(item['user_id']).always(function(data) {
+        $(document).getUser(item['author']).always(function(data) {
             $('.task-note-list').append(
                 `<div class="col-md-2 task-note-list-item">
-                    <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${item['user_id']}.png" 
-                    data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${data['first_name'] + ' ' + data['last_name']}">
+                    <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${item['author']}.png" 
+                    data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${item['created_at']}">
                     </div>
                 </div>
                 <div class="col-md-10 card card-sm task-note-text task-note-list-item">
-                    ${item['body']}
+                    <a href="#">${data['first_name'] + ' ' + data['last_name']}</a>${' ' + item['body']}
                 </div>`
             );
         });
@@ -161,7 +160,7 @@ $.fn.displayNote = function(items) {
 }
 
 
-$.fn.displayTask = function(items, column = 3) {
+$.fn.displayCard = function(items, column = 3) {
     
     var $containers = [];
     var status = [1, 4, 2];
@@ -176,19 +175,19 @@ $.fn.displayTask = function(items, column = 3) {
         
         $.each(items, function(j, item) {
             
-            var actorsAppend = "<strong>Contributor</strong><br/>";
+            var viewersAppend = "<strong>Contributor</strong><br/>";
 
-            if(item['actors'].length) {
+            if(item['viewers'].length) {
 
-                $.each(item['actors'], function (i, actor) {
-                    actorsAppend = actorsAppend + actor['first_name'] + " " + actor['last_name'] + "<br/>";
+                $.each(item['viewers'], function (i, viewer) {
+                    viewersAppend = viewersAppend + viewer['first_name'] + " " + viewer['last_name'] + "<br/>";
                 });
             } else {
                 
-                actorsAppend = "No Contributor";
+                viewersAppend = "No Contributor";
             }
 
-            var contributorAppend = `data-toggle="popover" data-trigger="hover" data-html="true" data-placement="right" data-content="${actorsAppend}"`;
+            var contributorAppend = `data-toggle="popover" data-trigger="hover" data-html="true" data-placement="right" data-content="${viewersAppend}"`;
 
             if(status[i] == item['status']) {
 
@@ -229,7 +228,7 @@ $.fn.displayTask = function(items, column = 3) {
 };
 
 
-$.fn.searchTask = function(items, keyword) {
+$.fn.searchCard = function(items, keyword) {
 
     $('#taskSearchQuery').html('');
 

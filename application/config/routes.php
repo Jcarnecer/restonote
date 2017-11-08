@@ -61,6 +61,19 @@ $route['index'] = 'views/index';
 $route['api/user/(:any)']['GET'] = 'users/get/$1';
 
 
+# card
+$route['api/card/(:any)']['POST'] = 'cards/post/$1';
+$route['api/card/(:any)']['GET'] = 'cards/get/$1';
+
+$route['api/card/(:any)/(:any)']['POST'] = 'cards/post/$1/$2';
+$route['api/card/(:any)/(:any)']['GET'] = 'cards/get/$1/$2';
+
+$route['api/comment/(:any)']['POST'] = 'cards/post_comments/$1';
+$route['api/comment/(:any)']['GET'] = 'cards/get_comment/$1';
+
+// $route['api/done/(:any)']['POST'] = 'tasks/mark_as_done/$1';
+
+
 # task
 $route['api/task/(:any)']['POST'] = 'tasks/post/$1';
 $route['api/task/(:any)']['GET'] = 'tasks/get/$1';

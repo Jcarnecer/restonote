@@ -11,13 +11,13 @@
                 <input type="text" data-target="#createCollapse" data-toggle="collapse" class="input-tag" name="title" placeholder="What's your plan, <?= $user_name ?>?">
 
                 <div id="createCollapse" class="collapse">
-                    <textarea id="addTask" rows="2" class="body lead" name="description" placeholder="Description"></textarea>
+                    <textarea id="addTask" rows="2" class="body lead" name="body" placeholder="Description"></textarea>
 
                     <div id="dateTaskSettings" class="collapse">    
                         <hr>
                         <div class="container-fluid">
                             <label>Due Date: </label>
-                            <input type="date" name="due_date">
+                            <input type="number" name="privacy">
                         </div>
                         <div class="container-fluid">    
                             <div class="task-tag-list">

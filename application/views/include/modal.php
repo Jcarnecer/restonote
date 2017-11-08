@@ -1,27 +1,3 @@
-<!-- Team Create Modal -->
-<div id="teamModifyModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="transition:0.2s;">
-            <div class="modal-body">
-                <form method="post">
-                    <input type="text" class="heading" name="name" placeholder="Team Name" maxlength="20" required>
-                    <hr/>
-                    <div class="form-group">
-                        <div class="team-member-list">
-                            <span class="team-member-label">Members: </span>
-                            <input type="text" class="team-member" placeholder="Add Member's Email Address" size="32" style="display:inline-block;"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" id="teamSubmit" class="btn btn-primary pull-right" data-dismiss="modal"><i class="fa fa-users"></i> Create Team</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Task Modify Modal -->
 <div id="taskModifyModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -132,7 +108,7 @@
                         <div class="row task-note-list">
                             
                         </div>
-                        <input type="hidden" name="notes" />    
+                        <input type="hidden" name="comments" />    
                     </div>
 <!--                        <div class="vertical-line"></div>-->
                     <div class="container">

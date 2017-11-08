@@ -78,17 +78,16 @@ class Cards extends CI_Controller {
 		$comment_details 	= [
 			'card_id'	 	  => $card_id,
 			'body'		 	  => $this->input->post('comments'),
-			'created_at' 	  => date('Y-m-d'),
 			'author'	 	  => $this->session->user->id
 		];
 
-		$this->card_model->add_card_comments($card_id, $comment_details);
+		$this->card_model->add_comments($card_id, $comment_details);
 	}
 
 	
 	public function get_comments($card_id) {
 		
-		echo json_encode($this->card_model->get_card_comments($card_id));
+		echo json_encode($this->card_model->get_comments($card_id));
 	}
 
 
