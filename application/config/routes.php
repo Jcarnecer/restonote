@@ -49,29 +49,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'views/personal';
-$route['tasks'] = 'views/personal';
-// $route['tasks'] = 'tasks/index';
+$route['default_controller'] = 'views/index';
+$route['notes'] = 'views/personal';
 
 # view
-$route['personal'] = 'views/personal';
-$route['team/(:any)'] = 'views/team/$1';
+$route['index'] = 'views/index';
 
 
 # API
 # user
 $route['api/user/(:any)']['GET'] = 'users/get/$1';
 
-# team
-$route['api/team']['POST'] = 'teams/post';
-$route['api/team']['GET'] = 'teams/get';
-
-$route['api/team/(:any)']['POST'] = 'teams/post/$1';
-$route['api/team/(:any)']['GET'] = 'teams/get/$1';
-
-$route['api/validate_member']['POST'] = 'teams/validate_member';
-
-$route['api/leave_team/(:any)']['POST'] = 'teams/leave_team/$1';
 
 # task
 $route['api/task/(:any)']['POST'] = 'tasks/post/$1';
@@ -85,9 +73,7 @@ $route['api/note/(:any)']['GET'] = 'tasks/get_notes/$1';
 
 $route['api/done/(:any)']['POST'] = 'tasks/mark_as_done/$1';
 
-$route['api/change_column/(:any)']['POST'] = 'tasks/change_column/$1';
 
-$route['api/get_user_team_task/(:any)']['GET'] = 'tasks/get_user_team_task/$1';
 # end-of-API
 
 

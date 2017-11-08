@@ -4,25 +4,15 @@ $(function () {
     var $kanbanPanel = [$('#todoPanel>.row'), $('#doingPanel>.row'), $('#donePanel>.row')];
     var column = 0;
 
-    
-    switch(getTaskType()) {
-        
-        case 'personal':
-            $container = $('#taskTileList')
-            column = 4;
-            break;
 
-        case 'team':
-            $container = $('#todoPanel>.row');
-            column = 2;
-            break;
-    }
+    $container = $('#taskTileList')
+    column = 4;
 
 
     // Initialize
     $(document).getTask().done(function(data) {
 
-        if(data.length == 0 && getTaskType() == 'personal') {
+        if(data.length == 0) {
 
             $('#taskTileList').html(
                 `<h1 class="no-task-text">
@@ -31,7 +21,7 @@ $(function () {
             );
         } else {
 
-            $(document).displayTask(getTaskType(), data, column);
+            $(document).displayTask(data, column);
         }
     });
 
@@ -296,7 +286,7 @@ $(function () {
 
             $(document).getTask().done(function(data){
 
-                $(document).displayTask(getTaskType(), data);
+                $(document).displayTask(data);
             });
         });
     });

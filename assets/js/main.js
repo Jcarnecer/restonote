@@ -1,19 +1,12 @@
 const baseUrl = window.location.origin + '/task/';
 var userId = null;
 var authorId = null;
-var taskType = null;
 
 
 function setAuthorId(id) { authorId = id; }
 
 
 function getAuthorId() { return authorId; }
-
-
-function setTaskType(type) { taskType = type; }
-
-
-function getTaskType() { return taskType; }
 
 
 function setUserId(id) { userId = id; }
@@ -80,100 +73,6 @@ $.fn.postTaskNote = function(details, taskId) {
 }
 
 
-$.fn.getTeam = function(teamId = null) {
-
-    return $.ajax({
-
-        type: 'GET',
-        url: `${baseUrl}api/team` + (teamId != null ? `/${teamId}` : ''),
-        dataType: 'json'
-    });
-};
-
-
-$.fn.postTeam = function(details, teamId = null) {
-
-    return $.ajax({
-
-        type: 'POST',
-        url: `${baseUrl}api/team` + (teamId != null ? `/${teamId}` : ''),
-        dataType: 'json',
-        data: details
-    });
-};
-
-
-$.fn.changeColumn = function(details, taskId) {
-
-    return $.ajax({
-
-        type: 'POST',
-        url: `${baseUrl}api/change_column/${taskId}`,
-        datType: 'json',
-        data: details
-    });
-}
-
-
-$.fn.getUserTeamTask = function(userId) {
-
-    return $.ajax({
-
-        type: 'GET',
-        url: `${baseUrl}api/get_user_team_task/${userId}`,
-        dataType: 'json'
-    });
-}
-
-
-// Team
-$.fn.displayMember = function(items, edit = false) {
-
-    $.each(items, function(i, item) {
-
-        if(edit) {
-
-            $('.team-member-list').find('.team-member').before(
-                `<span class="badge badge-default">${item['first_name']} ${item['last_name']} <a class="team-member-remove" data-value="${item['email_address']}">&times;</a></span>`
-            );
-            $('.team-member-list').parent().append(
-                `<input type="hidden" name="members[]" value="${item['email_address']}" />`
-            );
-        } else
-
-            $('.team-member-list').append(
-                `<span class="badge badge-default">${item['first_name']} ${item['last_name']}</span>`
-            );
-    });
-};
-
-
-$.fn.validateMember = function(value) {
-
-    return $.ajax({
-
-        async: false,
-        type: 'POST',
-        url: `${baseUrl}api/validate_member`,
-        data: {
-            email: value
-        },
-        dataType: 'json'
-    }).responseJSON;
-};
-
-
-$.fn.leaveTeam = function(teamId, userId) {
-
-    return $.ajax({
-
-        type: 'POST',
-        url: `${baseUrl}api/leave_team/${teamId}`,
-        dataType: 'json'
-    });
-};
-
-
 // Task
 $.fn.resetForm = function() {
     
@@ -186,12 +85,8 @@ $.fn.resetForm = function() {
     // $('#taskModifyModal').find('.btn-color').find('i').removeClass('fa fa-check fa-lg');
     // $('#taskModifyModal').find(`button[data-value="#ffffff"] i`).addClass('fa fa-check fa-lg');
 
-    if(getTaskType() == 'personal')
     
-        $('#personalCreate').find('form')[0].reset();
-    else if(getTaskType() == 'team')
-        
-        $('#taskModifyModal').find('form')[0].reset();
+    $('#personalCreate').find('form')[0].reset();
 
     $('.task-container').find('.task-actor-list').siblings('input').remove();
     $('.task-container').find('.task-actor-list').find('span.badge').remove();
@@ -266,24 +161,13 @@ $.fn.displayNote = function(items) {
 }
 
 
-$.fn.displayTask = function(type, items, column = 3) {
+$.fn.displayTask = function(items, column = 3) {
     
     var $containers = [];
     var status = [1, 4, 2];
 
-    switch(type) {
-        case 'personal':
-            $containers.push($('#taskTileList'));
-            column = 4;
-            break;
-
-        case 'team':
-            $containers.push($('#todoPanel>.panel-content'));
-            $containers.push($('#doingPanel>.panel-content'));
-            $containers.push($('#donePanel>.panel-content'));
-            column = 2;
-            break;
-    }
+    $containers.push($('#taskTileList'));
+    column = 4;
 
     colNumber = 12/column;
 
@@ -316,15 +200,8 @@ $.fn.displayTask = function(type, items, column = 3) {
                         draggable="true" ondragstart="drag(event)" 
                         style="background-color:${item['color']};">
 
-                            <div class="container" ${getTaskType() == 'team' ? contributorAppend : ''}>
+                            <div class="container" >
                                 <span class="tile-title">
-                                    ${getTaskType() == 'team' ? 
-                                        item['actors'].length ? 
-                                            item['actors'].length > 1 ? 
-                                                '<i class="fa fa-users"></i>' : 
-                                                '<i class="fa fa-user"></i>' : 
-                                            '<i class="fa fa-user-o"></i>' : 
-                                        ''} 
                                     ${item['title']}
                                 </span>
                             </div>
