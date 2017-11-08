@@ -80,97 +80,96 @@
         <div class="task-container modal-content" style="transition:0.2s;">
             <div class="modal-body">
                 
-                    <form id="taskViewForm">
-                        <div class="d-flex justify-content-between bd-highlight mb-3">
-                            <div class="p-1 bd-highlight">
-                                <?php if($task_type == 'team'): ?>
-                                <div class="container-fluid">
-                                    <p></p>
-                                </div>
-                                <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Contributors" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i>
-                                    <div class="task-actor-list" style="display:inline-block;"></div>
-                                </a>
-                                <?php endif; ?>
-                                <?php if($task_type == 'personal'): ?>
-                                <div class="container-fluid">
-                                    <p></p>
-                                </div>
-                                <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Assigned to" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i>
-                                    <div style="display:inline-block;"> <?= $user_name ?></div>
-                                </a>
-                                <?php endif; ?>
+                <form id="taskViewForm">
+                    <div class="d-flex justify-content-between bd-highlight mb-3">
+                        <div class="p-1 bd-highlight">
+                            <?php if($task_type == 'team'): ?>
+                            <div class="container-fluid">
+                                <p></p>
                             </div>
-                            <div class="p-1 bd-highlight">
-                                
+                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Contributors" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                <div class="task-actor-list" style="display:inline-block;"></div>
+                            </a>
+                            <?php endif; ?>
+                            <?php if($task_type == 'personal'): ?>
+                            <div class="container-fluid">
+                                <p></p>
                             </div>
-                            <div class="p-1 bd-highlight">
-                                <div class="dropdown">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 15px 15px; margin: 5px;">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style="padding: 15px 15px; font-size: 30px; color: inherit; text-decoration: none;">
-                                        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                        <a class="task-edit dropdown-item" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit Task</a>
-                                        <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Mark as Done</a>
-                                    </div>        
-                                </div>
+                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Assigned to" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;"><img  src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle" aria-hidden="true" >
+                                <div style="display:inline-block;"> <?= $user_name ?></div>
+                            </a>
+                            <?php endif; ?>
+                        </div>
+                        <div class="p-1 bd-highlight">
+                            
+                        </div>
+                        <div class="p-1 bd-highlight">
+                            <div class="dropdown">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 15px 15px; margin: 5px;">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style="padding: 15px 15px; font-size: 30px; color: inherit; text-decoration: none;">
+                                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    <a class="task-edit dropdown-item" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit Task</a>
+                                    <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Mark as Done</a>
+                                </div>        
                             </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="laman-shiz">
+                       <div class="laman-shiz1">
+                         <div class="row">
+                            <div class="col-md-10">
+                               <ul>
+                                   <li><h1 id="title" class="heading"><b></b></h1></li>
+                                   <li><textarea id="description" class="body lead" disabled></textarea> </li>
+                               </ul>
+                            </div>
+                         </div>  
+                       </div>
+                        <hr/>
+                        <div class="form-group">
+                            <span class="task-note-label">Comments</span>
+                        </div>
+                        <div class="row task-note-create">
+                           <div class="container">
+                               <div class="col-md-2">
+                                   <img class="img-fluid mr-auto" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
+                               </div>
+                               <div class="col-md-10">
+                                   <div class="task-note-box">
+                                       <textarea class="task-note" rows="2" placeholder="Add Comments"></textarea>
+                                   </div>
+                               </div>  
+                           </div>
                         </div>
                         <hr>
-                        <div class="laman-shiz">
-                           <div class="laman-shiz1">
-                             <div class="row">
-                                <div class="col-md-10">
-                                   <ul>
-                                       <li><h1 id="title" class="heading"><b></b></h1></li>
-                                       <li><textarea id="description" class="body lead" disabled></textarea> </li>
+                        <div class="row task-note-list">
+                            
+                        </div>
+                        <input type="hidden" name="notes" />    
+                    </div>
+<!--                        <div class="vertical-line"></div>-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="kanan-shiz">
+                                <div class="kanan">
+                                   <ul class="date-shiz">
+                                       <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Due Date"><p id="date"><i class="fa fa-calendar" style=" font-size: 35px; padding-right: 40px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
+                                       <hr>
+                                       <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Countdown"><p id="countdown"><i class="fa fa-clock-o" style="font-size: 35px; padding-right: 30px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
+                                       <hr>
+                                       <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Tags"><i class="fa fa-tags" style="font-size: 35px; padding-right: 30px;" aria-hidden="true"></i><div class="task-tag-list" style="display:inline-block;"></div></a></li>
+                                       <hr>
                                    </ul>
                                 </div>
-                             </div>  
-                           </div>
-                            <hr/>
-                            <div class="form-group">
-                                <span class="task-note-label">Notes</span>
-                            </div>
-                            <div class="row task-note-create">
-                               <div class="container">
-                                   <div class="col-md-2">
-                                       <i class="fa fa-user-circle fa-3x task-note-user"></i>
-                                   </div>
-                                   <div class="col-md-10">
-                                       <div class="task-note-box">
-                                           <textarea class="task-note" rows="2" placeholder="Add Notes"></textarea>
-                                       </div>
-                                   </div>  
-                               </div>
-                            </div>
-                            <hr>
-                            <div class="row task-note-list">
-                                
-                            </div>
-                            <input type="hidden" name="notes" />    
-                        </div>
-<!--                        <div class="vertical-line"></div>-->
-                        <div class="container">
-                            <div class="row">
-                                <div class="kanan-shiz">
-                                    <div class="kanan">
-                                       <ul class="date-shiz">
-                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Due Date"><p id="date"><i class="fa fa-calendar" style=" font-size: 35px; padding-right: 40px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
-                                           <hr>
-                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Countdown"><p id="countdown"><i class="fa fa-clock-o" style="font-size: 35px; padding-right: 30px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
-                                           <hr>
-                                           <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Tags"><i class="fa fa-tags" style="font-size: 35px; padding-right: 30px;" aria-hidden="true"></i><div class="task-tag-list" style="display:inline-block;"></div></a></li>
-                                           <hr>
-                                       </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                    </form>
-                
+                    </div>
+                </form>
             </div>
         </div>
     </div>

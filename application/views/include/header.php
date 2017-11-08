@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 
-                <li class="">
+               <!--  <li class="">
                     <a class="" href="<?= base_url('personal'); ?>">
                         <i class="fa fa-bullhorn" aria-hidden="true"></i>
                         <span>Bulletin Board</span>
@@ -71,7 +71,7 @@
                             <a class="team-create" href="#teamModifyModal" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Create Team</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 
                 <li class="">
                     <a class="" href="http://localhost/main/users/logout">
@@ -94,7 +94,7 @@
                     </div>
                     <a class="navbar-brand" href="<?= base_url('tasks'); ?>">Task</a>
                     
-                    <?php if($task_type == 'team'): ?>
+                    <!-- <?php if($task_type == 'team'): ?>
                     <div class="btn-group" role="group" aria-label="Team">
                         <button id="highlightBtn" type="button" class="btn btn-success navbar-btn">
                             <i class="fa fa-eye"></i> My Tasks
@@ -108,11 +108,11 @@
                             <i class="fa fa-sign-out"></i> Leave Group
                         </button>
                     </div>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
 
-                    <a class="navbar-brand ml-auto" href="#" data-toggle="popover" data-placement="bottom"  data-content="<?= $email ?>" data-trigger="hover">
+                    <a class="navbar-brand ml-auto text-right" href="#" data-toggle="popover" data-placement="bottom"  data-content="<?= $email ?>" data-trigger="hover">
                         <!-- <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i> -->
-                        <img src="<?= base_url('assets/img/avatar/user_id.png') ?>" alt="<?= $email ?>">
+                        <img class="img-fluid w-25 mr-auto" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" alt="<?= $email ?>">
                     </a>
 
                 </nav>

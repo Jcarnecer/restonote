@@ -18,7 +18,8 @@
             
             $('[data-toggle="popover"]').popover();
         });
-    </script>    
+    </script>
+
     <script>
         setAuthorId('<?= $author_id ?>');
         setUserId('<?= $user_id ?>');
