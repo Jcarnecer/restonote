@@ -200,7 +200,7 @@ $(function () {
                 $noteInput.closest('form').find('.task-note-list').append(
                     `<div class="col-md-2 task-note-list-item">
                         <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${getUserId()}.png" 
-                    data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${item['created_at']}">
+                    data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="Just now">
                         </div>
                     </div>
                     <div class="col-md-10 card card-sm task-note-text task-note-list-item">
