@@ -1,0 +1,15 @@
+.corkboard-border {
+    padding: 1.5vw;
+    background: #a15e33;
+    background: radial-gradient(#a15e33, #3f2514);
+    box-shadow: 0 0 10px #000000;
+}
+
+.corkboard {
+    background: #B08E5E;
+    background: url("https://d13yacurqjgara.cloudfront.net/users/2437/screenshots/1671078/iphoto_corkboard_1x.png");
+    box-shadow: inset 0 0 10px #000000;
+    padding: 30px 20px 50px 20px;
+    position: relative;
+    
+}
