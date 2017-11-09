@@ -21,6 +21,12 @@ html, body {
 }
 
 /* Left Column for Modal*/
+/*
+.header-shiz{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+*/
+
 .laman-shiz{
     width: 70%;
     float: left;
@@ -28,16 +34,28 @@ html, body {
 }
 
 .laman-shiz1{
-    border: 1px;
-    
+    border: 1px;   
+}
+
+.laman-shiz2{
+/*
+    height: 100px;
+    overflow-y: auto;
+    width: 100%;
+*/  overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: pre-line;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: 'Shadows Into Light', cursive;
 }
 
 /* Avatar Icon */
 
 .avatar{
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    border-radius: 70%;
 }
 
 /* Right Column for Modal*/
@@ -49,6 +67,7 @@ html, body {
 .kanan{
     margin-bottom: 50px;
     float: right;
+    
 /*    margin-left: -20px;*/
 }
 .vertical-line{
@@ -154,6 +173,9 @@ html, body {
 
 .modal .task-note-list {
     margin: 10px;
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: 300;
+    font-size: 19px;
 }
 
 
@@ -215,6 +237,13 @@ html, body {
 
 
 /* View_task_modal */
+.pamagat{
+    font-weight: 750;
+    font-size: 40px;
+    font-family: 'Shadows Into Light', cursive;
+    
+}
+
 .heading {
     font-weight: 750;
     font-size: 32px;
@@ -398,9 +427,9 @@ html, body {
 .tile-description {
     overflow-x: hidden;
     overflow-y: hidden;
-    word-wrap: break-word;
+    white-space: pre-line;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 24px;
 }
 
 

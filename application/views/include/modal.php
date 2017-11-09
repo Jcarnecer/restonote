@@ -47,24 +47,25 @@
     <div class="modal-dialog modal-lg">
         <div class="task-container modal-content" style="transition:0.2s;">
             <div class="modal-body">
-                
                 <form id="taskViewForm">
-                    <div class="d-flex justify-content-between bd-highlight mb-3">
-                        <div class="p-1 bd-highlight">
+                    <div class="d-flex justify-content-between">
+                        <div class="p-0">
                             <div class="container-fluid">
                                 <div class="container-fluid">
                                     <p></p>
                                 </div>
-                                <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Assigned to" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;">
+                                <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content=" <?= $user_name ?>" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px;">
                                     <img src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle avatar" aria-hidden="true" >
-                                    <div style="display:inline-block;"> <h1 id="title" class="heading"></h1></div>
                                 </a>
                             </div>
                         </div>
-                        <div class="p-1 bd-highlight">
-                            
+                        <div class="p-0">
+                            <div style="display:inline-block; margin: 10px; padding: 10px;"> 
+                                <h1 id="title" class="pamagat"></h1>
+                                <center><small>Title</small></center>
+                            </div>
                         </div>
-                        <div class="p-1 bd-highlight">
+                        <div class="p-0">
                             <div class="dropdown">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 15px 15px; margin: 5px;">
                                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -73,19 +74,25 @@
                                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <a class="task-edit dropdown-item" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit Task</a>
-                                    <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Mark as Done</a>
+                                    <a class="task-edit dropdown-item" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit It</a>
+                                    <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Unpin</a>
                                 </div>        
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="laman-shiz">
-                       <div class="laman-shiz1">
+                       <div class="laman-shiz1 w3-card">
                          <div class="row">
                             <div class="col-md-10">
                                <ul>
-                                   <li><textarea id="description" class="body lead" disabled></textarea> </li>
+                                   <li>
+                                       <div class="container-fluid">
+                                            <div class="card-body">
+                                                <div id="description" class="laman-shiz2" disabled></div>   
+                                            </div>
+                                       </div> 
+                                   </li>
                                </ul>
                             </div>
                          </div>  
@@ -202,4 +209,4 @@
             </div>
         </div>
     </div>
-</div>    
+</div>
