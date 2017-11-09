@@ -29,10 +29,10 @@ class Cards extends CI_Controller {
 				
 				if($this->input->post('tags[]') != null)
 
-					$this->tag_model->update($card_id, $this->input->post('tags[]'));
+					$this->card_tag_model->update($card_id, $this->input->post('tags[]'));
 				else
 
-					$this->tag_model->update($card_id, []);
+					$this->card_tag_model->update($card_id, []);
 
 
 				if($this->input->post('viewers[]') != null)
@@ -47,7 +47,7 @@ class Cards extends CI_Controller {
 				
 				if($this->input->post('tags[]') != null)
 
-					$this->tag_model->insert($card_id, $this->input->post('tags[]'));
+					$this->card_tag_model->insert($card_id, $this->input->post('tags[]'));
 					
 
 				if($this->input->post('viewers[]') != null)

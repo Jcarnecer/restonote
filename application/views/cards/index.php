@@ -18,7 +18,7 @@
                             <div id="dateTaskSettings" class="collapse">    
                                 <hr>
                                 <div class="container-fluid">
-                                    <label>Due Date: </label>
+                                    <label>Privacy: </label>
                                     <input type="number" name="privacy" value="1">
                                 </div>
                                 <div class="container-fluid">    

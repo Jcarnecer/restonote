@@ -7,12 +7,12 @@
                 <form method="post">
                     <input type="text" class="heading" name="title" placeholder="Title" maxlength="20" required>
                     <hr/>
-                    <textarea rows="5" class="body lead" name="description" placeholder="Description"></textarea>
+                    <textarea rows="5" class="body lead" name="body" placeholder="Description"></textarea>
                     <div id="createTaskSetting" class="collapse">
                         <!-- <hr/> -->
                         <div class="form-group">
-                            <label>Due Date:</label>
-                            <input type="date" name="due_date">
+                            <label>Privacy: </label>
+                            <input type="number" name="privacy" value="1">
                         </div>
                         <div class="form-group">
                             <div class="task-tag-list">
