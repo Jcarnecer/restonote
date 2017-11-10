@@ -199,11 +199,18 @@ $.fn.displayCard = function(items, column = 3) {
                         data-toggle="modal" data-target="#taskViewModal" data-value="${item['id']}" 
                         draggable="true" ondragstart="drag(event)" 
                         style="background-color:${item['color']};">
-
-                            <div class="container" >
+                            
+                            <div class="card-header">
                                 <span class="tile-title">
-                                    ${item['title']}
+                                ${item['title']}
                                 </span>
+                            </div>
+                            <div class="container-fluid" >
+                                <div class="row">
+                                    <div class="card-body">
+                                        <h3 class="tile-description1">${item['body']}</h3>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

@@ -81,7 +81,6 @@
             </div>
             <div class="modal-body ">
                 <form id="taskViewForm">
-                    <hr>
                     <div class="laman-shiz">
                        <div class="laman-shiz1 w3-card">
                          <div class="row">
@@ -90,7 +89,7 @@
                                    <li>
                                        <div class="container-fluid">
                                             <div class="card-body">
-                                                <div id="description" class="laman-shiz2" disabled></div>   
+                                                <div id="description" class="tile-description" disabled></div>   
                                             </div>
                                        </div> 
                                    </li>
