@@ -101,7 +101,6 @@ class Cards extends CI_Controller {
 
 	# Mark as Done
 	public function mark_as_done($card_id) {
-		
-		$this->card_model->update_status($card_id, ARCHIVE);
+		$this->card_model->update($card_id, ['status' => ARCHIVE]);
 	}
 }

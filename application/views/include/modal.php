@@ -73,8 +73,8 @@
                                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <a class="task-edit dropdown-item" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit Task</a>
-                                    <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Mark as Done</a>
+                                    <a class="task-edit dropdown-item" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit Post</a>
+                                    <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Archive</a>
                                 </div>        
                             </div>
                         </div>

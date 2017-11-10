@@ -86,14 +86,19 @@ class Card_model extends CI_Model {
 	# Get card comments
 	public function get_comments($card_id) {
 
-		return $this->db->get_where('comments', ['card_id' => $card_id])->result();
+		return $this->db->select('*')
+			->from('comments')
+			->where('card_id', $card_id)
+			->order_by('created_at', 'ASC')
+			->get()
+			->result();
 	}
 
 
 	# Add card returning ID
 	public function insert($card_details) {
 
-		$card_details['status'] = 1;
+		$card_details['status'] = ACTIVE;
 
 		$this->db->insert('cards', $card_details);
 

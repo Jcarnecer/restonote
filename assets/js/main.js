@@ -16,10 +16,11 @@ function getUserId() { return userId; }
 
 
 // AJAX
-$.fn.getUser = function(userId) {
+$.fn.getUser = function(userId, sync = false) {
 
     return $.ajax({
         
+        async: !sync,
         type: 'GET',
         url: `${baseUrl}api/user/${userId}`,
         dataType: 'json'
@@ -144,7 +145,7 @@ $.fn.displayTag = function(items, edit = false) {
 $.fn.displayComment = function(items) {
 
     $.each(items, function(i, item){
-        $(document).getUser(item['author']).always(function(data) {
+        $(document).getUser(item['author'], true).always(function(data) {
             $('.task-note-list').append(
                 `<div class="col-md-2 task-note-list-item">
                     <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${item['author']}.png" 

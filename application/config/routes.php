@@ -71,7 +71,7 @@ $route['api/card/(:any)/(:any)']['GET'] = 'cards/get/$1/$2';
 $route['api/comment/(:any)']['POST'] = 'cards/post_comments/$1';
 $route['api/comment/(:any)']['GET'] = 'cards/get_comment/$1';
 
-// $route['api/done/(:any)']['POST'] = 'tasks/mark_as_done/$1';
+$route['api/done/(:any)']['POST'] = 'cards/mark_as_done/$1';
 
 
 # task
@@ -84,7 +84,7 @@ $route['api/task/(:any)/(:any)']['GET'] = 'tasks/get/$1/$2';
 $route['api/note/(:any)']['POST'] = 'tasks/post_notes/$1';
 $route['api/note/(:any)']['GET'] = 'tasks/get_notes/$1';
 
-$route['api/done/(:any)']['POST'] = 'tasks/mark_as_done/$1';
+// $route['api/done/(:any)']['POST'] = 'tasks/mark_as_done/$1';
 
 
 # end-of-API
