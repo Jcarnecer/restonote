@@ -46,30 +46,28 @@
 <div id="taskViewModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="task-container modal-content" style="transition:0.2s;">
-            <div class="modal-body">
-                
-                <form id="taskViewForm">
-                    <div class="d-flex justify-content-between bd-highlight mb-3">
-                        <div class="p-1 bd-highlight">
-                            <div class="container-fluid">
-                                <div class="container-fluid">
-                                    <p></p>
-                                </div>
-                                <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Assigned to" style="display:inline-block; color: inherit; font-size: 25px; padding-right: 30px; padding-bottom: 20px;">
-                                    <img src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle avatar" aria-hidden="true" >
-                                    <div style="display:inline-block;"> <h1 id="title" class="heading"></h1></div>
-                                </a>
-                            </div>
+            <div class="modal-header card-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content=" <?= $user_name ?>" style="display:inline-block; color: inherit; font-size: 15px; padding-right: 30px;">
+                                <img src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle avatar" aria-hidden="true" >
+                            </a>      
                         </div>
-                        <div class="p-1 bd-highlight">
+                        <div class="col-md-4 col-md-offset-4">
+                           <div class="container-fuild">
+                               <div style="display:inline-block;"> 
+                                   <h1 id="title" class="pamagat"></h1>
+                               </div>  
+                           </div>
                             
                         </div>
-                        <div class="p-1 bd-highlight">
+                        <div class="col-md-4">
                             <div class="dropdown">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 15px 15px; margin: 5px;">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 10px;">
                                     <i class="fa fa-times" aria-hidden="true"></i>
                                 </button>
-                                <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style="padding: 15px 15px; font-size: 30px; color: inherit; text-decoration: none;">
+                                <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style=" font-size: 30px; color: inherit; text-decoration: none; margin-right: 15px;">
                                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -78,14 +76,24 @@
                                 </div>        
                             </div>
                         </div>
-                    </div>
+                    </div> 
+                </div> 
+            </div>
+            <div class="modal-body ">
+                <form id="taskViewForm">
                     <hr>
                     <div class="laman-shiz">
-                       <div class="laman-shiz1">
+                       <div class="laman-shiz1 w3-card">
                          <div class="row">
                             <div class="col-md-10">
                                <ul>
-                                   <li><textarea id="description" class="body lead" disabled></textarea> </li>
+                                   <li>
+                                       <div class="container-fluid">
+                                            <div class="card-body">
+                                                <div id="description" class="laman-shiz2" disabled></div>   
+                                            </div>
+                                       </div> 
+                                   </li>
                                </ul>
                             </div>
                          </div>  
@@ -118,10 +126,6 @@
                             <div class="kanan-shiz">
                                 <div class="kanan">
                                    <ul class="date-shiz">
-                                       <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Due Date"><p id="date"><i class="fa fa-calendar" style=" font-size: 35px; padding-right: 40px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
-                                       <hr>
-                                       <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Countdown"><p id="countdown"><i class="fa fa-clock-o" style="font-size: 35px; padding-right: 30px;" aria-hidden="true"></i><span class="body"></span></p></a></li>
-                                       <hr>
                                        <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Tags"><i class="fa fa-tags" style="font-size: 35px; padding-right: 30px;" aria-hidden="true"></i><div class="task-tag-list" style="display:inline-block;"></div></a></li>
                                        <hr>
                                    </ul>
@@ -202,4 +206,4 @@
             </div>
         </div>
     </div>
-</div>    
+</div>
