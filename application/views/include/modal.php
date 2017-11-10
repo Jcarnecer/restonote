@@ -46,40 +46,41 @@
 <div id="taskViewModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="task-container modal-content" style="transition:0.2s;">
-            <div class="modal-body">
-                <form id="taskViewForm">
-                    <div class="d-flex justify-content-between">
-                        <div class="p-0">
-                            <div class="container-fluid">
-                                <div class="container-fluid">
-                                    <p></p>
-                                </div>
-                                <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content=" <?= $user_name ?>" style="display:inline-block; color: inherit; font-size: 15px; padding-right: 30px;">
-                                    <img src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle avatar" aria-hidden="true" >
-                                </a>
-                            </div>
+            <div class="modal-header card-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content=" <?= $user_name ?>" style="display:inline-block; color: inherit; font-size: 15px; padding-right: 30px;">
+                                <img src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle avatar" aria-hidden="true" >
+                            </a>      
                         </div>
-                        <div class="p-0">
-                            <div style="display:inline-block; margin: 10px; padding: 10px;"> 
-                                <h1 id="title" class="pamagat"></h1>
-                                <center><small>Title</small></center>
-                            </div>
+                        <div class="col-md-4 col-md-offset-4">
+                           <div class="container-fuild">
+                               <div style="display:inline-block;"> 
+                                   <h1 id="title" class="pamagat"></h1>
+                               </div>  
+                           </div>
+                            
                         </div>
-                        <div class="p-0">
+                        <div class="col-md-4">
                             <div class="dropdown">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 15px 15px; margin: 5px;">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 10px;">
                                     <i class="fa fa-times" aria-hidden="true"></i>
                                 </button>
-                                <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style="padding: 15px 15px; font-size: 30px; color: inherit; text-decoration: none;">
+                                <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style=" font-size: 30px; color: inherit; text-decoration: none; margin-right: 15px;">
                                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                     <a class="task-edit dropdown-item" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit It</a>
-                                    <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Unpin</a>
+<!--                                    <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Unpin</a>-->
                                 </div>        
                             </div>
                         </div>
-                    </div>
+                    </div> 
+                </div> 
+            </div>
+            <div class="modal-body ">
+                <form id="taskViewForm">
                     <hr>
                     <div class="laman-shiz">
                        <div class="laman-shiz1 w3-card">
