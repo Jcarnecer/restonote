@@ -44,7 +44,7 @@
 
 <!-- Task View Modal -->
 <div id="taskViewModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <div class="task-container modal-content" style="transition:0.2s;">
             <div class="modal-header card-header">
                 <div class="container-fluid">
@@ -56,9 +56,11 @@
                         </div>
                         <div class="col-md-4 col-md-offset-4">
                            <div class="container-fuild">
-                               <div style="display:inline-block;"> 
-                                   <h1 id="title" class="pamagat"></h1>
-                               </div>  
+                              <div class="row">
+                                   <div style="display:inline-block;"> 
+                                       <h1 id="title" class="pamagat"></h1>
+                                   </div>  
+                              </div>
                            </div>
                             
                         </div>
@@ -76,41 +78,36 @@
                                 </div>        
                             </div>
                         </div>
+                        <div class="col-md-4"></div>
                     </div> 
                 </div> 
             </div>
             <div class="modal-body ">
                 <form id="taskViewForm">
                     <div class="laman-shiz">
-                       <div class="laman-shiz1 w3-card">
-                         <div class="row">
-                            <div class="col-md-10">
-                               <ul>
-                                   <li>
-                                       <div class="container-fluid">
-                                            <div class="card-body">
-                                                <div id="description" class="tile-description" disabled></div>   
-                                            </div>
-                                       </div> 
-                                   </li>
-                               </ul>
-                            </div>
-                         </div>  
+                       <div class="laman-shiz1">
+                            <div class="card">    
+                              <div class="card-body container-fluid">
+                                   <div id="description" class="tile-description" disabled></div>    
+                              </div>
+                            </div> 
                        </div>
-                        <hr/>
+                        <hr>
                         <div class="form-group">
                             <span class="task-note-label">Comments</span>
                         </div>
                         <div class="row task-note-create">
                            <div class="container">
-                               <div class="col-md-2">
-                                   <img class="img-fluid mr-auto" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
-                               </div>
-                               <div class="col-md-10">
-                                   <div class="task-note-box">
-                                       <textarea class="task-note" rows="2" placeholder="Add Comments"></textarea>
-                                   </div>
-                               </div>  
+                              <div class="row">
+                                  <div class="col-md-3">
+                                      <img class="img-fluid mr-auto" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
+                                  </div>
+                                  <div class="col-md-9">
+                                      <div class="task-note-box">
+                                          <textarea class="task-note" rows="2" placeholder="Add Comments"></textarea>
+                                      </div>
+                                  </div>    
+                              </div>
                            </div>
                         </div>
                         <hr>
@@ -120,14 +117,18 @@
                         <input type="hidden" name="comments" />    
                     </div>
 <!--                        <div class="vertical-line"></div>-->
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="kanan-shiz">
                                 <div class="kanan">
-                                   <ul class="date-shiz">
-                                       <li><a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Tags"><i class="fa fa-tags" style="font-size: 35px; padding-right: 30px;" aria-hidden="true"></i><div class="task-tag-list" style="display:inline-block;"></div></a></li>
-                                       <hr>
-                                   </ul>
+                                   <div class="row">
+                                       <div class="col-md-4"><span><i class="fa fa-tag" style="font-size: 30px; padding-right: 25px;" aria-hidden="true"></i></span></div>
+                                       <div class="col-md-4">  
+                                          <a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Tags"><div class="task-tag-list" style="display:inline-block;"></div></a></div>
+                                       <div class="col-md-4"></div>
+                                   </div>
+                                   <hr>
+
                                 </div>
                             </div>
                         </div>

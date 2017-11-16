@@ -207,9 +207,7 @@ $.fn.displayCard = function(items, column = 3) {
                             </div>
                             <div class="container-fluid" >
                                 <div class="row">
-                                    <div class="card-body">
-                                        <h3 class="tile-description1">${item['body']}</h3>
-                                    </div>
+                                    <h3 class="tile-description1">${item['body']}</h3>
                                 </div>
                             </div>
 
