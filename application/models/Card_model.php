@@ -112,16 +112,12 @@ class Card_model extends CI_Model {
 	}
 
 
-	// public function prune_cards($id) {
-		
-	// 	foreach($this->db->get_where('cards', ['user_id' => $id])->result() as $card){
-			
-	// 		$this->db->delete('card_comments', 	['card_id' => $card->id]);
-	// 		$this->db->delete('cards_tagging',  ['card_id' => $card->id]);
-	// 	}
+	public function _archive() {
 
-	// 	$this->db->delete('cards', ['user_id' => $id]);
-	// }
+		return$this->db->set('status', ACTIVE)
+				->where('DATEDIFF(NOW(), updated_at) >= 60')
+				->update('cards');;
+	}
 	
 
 	public function add_viewers($card_id, $users) {

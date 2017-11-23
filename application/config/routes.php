@@ -88,7 +88,7 @@ $route['api/note/(:any)']['GET'] = 'tasks/get_notes/$1';
 
 
 # end-of-API
-
+$route['archive'] = 'cards/auto_archive';
 
 # other
 $route['404_override'] = '';

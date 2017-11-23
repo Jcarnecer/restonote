@@ -103,4 +103,11 @@ class Cards extends CI_Controller {
 	public function mark_as_done($card_id) {
 		$this->card_model->update($card_id, ['status' => ARCHIVE]);
 	}
+
+
+
+	public function auto_archive() {
+
+		$this->card_model->_archive();
+	}
 }
