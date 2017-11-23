@@ -20,7 +20,8 @@ class Cards extends CI_Controller {
 				'body'		  => $this->input->post('body'),
 				'color'		  => $this->input->post('color'),
 				'privacy'	  => $this->input->post('privacy'),
-				'user_id'	  => $author_id
+				'user_id'	  => $author_id,
+				'company_id'  => $this->session->user->company_id
 			];
 
 			if($card_id != null) {
