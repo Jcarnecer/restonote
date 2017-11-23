@@ -148,7 +148,7 @@ $.fn.displayComment = function(items) {
         $(document).getUser(item['author'], true).always(function(data) {
             $('.task-note-list').append(
                 `<div class="col-md-2 task-note-list-item">
-                    <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${item['author']}.png" 
+                    <img class="img-avatar-sm" src="http://localhost/main/assets/img/avatar/${item['author']}.png" 
                     data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${item['created_at']}">
                     </div>
                 </div>

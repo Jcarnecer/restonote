@@ -66,8 +66,15 @@ $(function () {
 
         $(document).getCard($(this).attr('data-value')).done(function (data) {
 
+            if(data['session_user']!=data['user_id'])
+                document.getElementById('card-menu').style.visibility = "hidden";
+            else
+                document.getElementById('card-menu').style.visibility = "visible";
+
             $('#taskViewModal').find('.dropdown a').attr('data-value', data['id']);
             $('#taskViewModal').find('form').attr('data-value', data['id']);
+            $('#taskViewModal').find('[id="author-name"]').attr('data-content', data['author']);
+            $('#taskViewModal').find('[id="author-avatar"]').attr('src', "http://localhost/main/assets/img/avatar/" + data['user_id'] + ".png");
             $('#taskViewModal').find('[id="title"]').html(data['title']);
             $('#taskViewModal').find('[id="description"]').html(data['body']);
             $('#taskViewModal').find('[id="date"] span').html(data['due_date']);
@@ -91,6 +98,7 @@ $(function () {
                 $('#taskViewModal').find('.task-actor-list').html('None');
 
             $(document).displayComment(data['comments']);
+
         });
     });
 
@@ -199,7 +207,7 @@ $(function () {
                 
                 $noteInput.closest('form').find('.task-note-list').append(
                     `<div class="col-md-2 task-note-list-item">
-                        <img class="task-note-user" src="http://localhost/main/assets/img/avatar/${getUserId()}.png" 
+                        <img class="img-avatar-sm" src="http://localhost/main/assets/img/avatar/${getUserId()}.png" 
                     data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="Just now">
                         </div>
                     </div>

@@ -12,7 +12,11 @@
                         <!-- <hr/> -->
                         <div class="form-group">
                             <label>Privacy: </label>
-                            <input type="number" name="privacy" value="1">
+                            <select name="privacy" form="taskCreateForm">
+                                <option value="1">Public</option>
+                                <option value="2">Custom</option>
+                                <option value="3">Private</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <div class="task-tag-list">
@@ -50,8 +54,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" data-content=" <?= $user_name ?>" style="display:inline-block; color: inherit; font-size: 15px; padding-right: 30px;">
-                                <img src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>" class="fa fa-user-circle avatar" aria-hidden="true" >
+                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" id="author-name"  style="display:inline-block; color: inherit; font-size: 15px; padding-right: 30px;">
+                                <img id="author-avatar" class="fa fa-user-circle avatar" aria-hidden="true" >
                             </a>      
                         </div>
                         <div class="col-md-4 col-md-offset-4">
@@ -69,7 +73,8 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 10px;">
                                     <i class="fa fa-times" aria-hidden="true"></i>
                                 </button>
-                                <button type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style=" font-size: 30px; color: inherit; text-decoration: none; margin-right: 15px;">
+
+                                <button id="card-menu" type="button" class="btn btn-link dropdwon-toggle pull-right" data-toggle="dropdown" id ="taskModalDropdown" style=" font-size: 30px; color: inherit; text-decoration: none; margin-right: 15px;">
                                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -85,13 +90,13 @@
             <div class="modal-body ">
                 <form id="taskViewForm">
                     <div class="laman-shiz">
-                       <div class="laman-shiz1">
+                        <div class="laman-shiz1">
                             <div class="card">    
                               <div class="card-body container-fluid">
                                    <div id="description" class="tile-description" disabled></div>    
                               </div>
                             </div> 
-                       </div>
+                        </div>
                         <hr>
                         <div class="form-group">
                             <span class="task-note-label">Comments</span>
@@ -100,7 +105,7 @@
                            <div class="container">
                               <div class="row">
                                   <div class="col-md-3">
-                                      <img class="img-fluid mr-auto" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
+                                      <img class="img-avatar" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
                                   </div>
                                   <div class="col-md-9">
                                       <div class="task-note-box">

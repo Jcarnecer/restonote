@@ -19,7 +19,11 @@
                                 <hr>
                                 <div class="container-fluid">
                                     <label>Privacy: </label>
-                                    <input type="number" name="privacy" value="1">
+                                    <select name="privacy" form="taskCreateForm">
+                                        <option value="1">Public</option>
+                                        <option value="2">Custom</option>
+                                        <option value="3">Private</option>
+                                    </select>
                                 </div>
                                 <div class="container-fluid">    
                                     <div class="task-tag-list">

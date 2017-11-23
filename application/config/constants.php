@@ -121,6 +121,6 @@ defined('COLORS')		OR define('COLORS', $colors);
 | For privacy setting of cards
 |
 */
-defined('PUBLIC') 		OR define('PUBLIC', 1);
-defined('CUSTOM')		OR define('CUSTOM', 2);
-defined('PRIVATE')		OR define('PRIVATE', 3);
+defined('_PUBLIC') 		OR define('_PUBLIC', 1);
+defined('_CUSTOM')		OR define('_CUSTOM', 2);
+defined('_PRIVATE')		OR define('_PRIVATE', 3);

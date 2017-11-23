@@ -17,21 +17,31 @@ class Card_model extends CI_Model {
 	public function get($id) {
 		
 		$card 				  = $this->db->get_where('cards', ['id' => $id], 1)->result()[0];
+		$card->author 		  = $this->get_author($card->user_id);
 		$card->comments		  = $this->get_comments($card->id);
 		$card->viewers 		  = $this->get_viewers($card->id);
 		$card->tags 		  = $this->get_tags($card->id);
+		$card->session_user	  = $this->session->user->id;
 
 		return $card;
 	}
 
 
 	# Get All card
-	public function get_all($author_id, $status = null) {
+	public function get_all($company_id, $status = null) {
 
 		if($status != null)
-			$cards = $this->db->get_where('cards', ['user_id' => $author_id, 'status' => $status])->result();
+			$this->db->select('*')
+					->from('cards')
+					->where(['company_id' => $company_id, 'privacy' => _PUBLIC, 'status' => $status])
+					->or_where(['user_id' => $this->session->user->id, 'privacy' => _PRIVATE OR _CUSTOM, 'status' => $status])
+					->get()->result();
 		else
-			$cards = $this->db->get_where('cards', ['user_id' => $author_id])->result();
+			$cards = $this->db->select('*')
+					->from('cards')
+					->where(['company_id' => $company_id, 'privacy' => _PUBLIC])
+					->or_where(['user_id' => $this->session->user->id, 'privacy' => _PRIVATE OR _CUSTOM])
+					->get()->result();
 
 		foreach ($cards as $card) {
 
@@ -152,5 +162,12 @@ class Card_model extends CI_Model {
 				]);
 			}
 		}
+	}
+
+
+	public function get_author($id) {
+		$user = $this->db->get_where('users', ['id' => $id], 1)->result()[0];
+
+		return $user->first_name . " " . $user->last_name;
 	}
 }

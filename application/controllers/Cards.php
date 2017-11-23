@@ -68,7 +68,7 @@ class Cards extends CI_Controller {
 
 		} else {
 			
-			echo json_encode($this->card_model->get_all($author_id));
+			echo json_encode($this->card_model->get_all($this->session->user->company_id));
 		}
 	}
 
