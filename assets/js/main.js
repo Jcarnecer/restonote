@@ -1,4 +1,4 @@
-const baseUrl = window.location.origin + '/note/';
+const baseUrl = window.location.origin + '/';
 var userId = null;
 var authorId = null;
 
