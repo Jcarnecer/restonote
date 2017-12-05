@@ -122,8 +122,8 @@
                 </form>
             </div>
             <div class="card-footer">
-                <small class="float-left">Sticky Note Created: <?= $user_name ?></small>
-                <small class="float-right text-right"><p id="timestamp"></p></small>
+                <small class="float-left">Sticky Note Created By: <span><?= $user_name ?></span></small>
+                <small class="float-right text-right"><span id="timestamp"></span></small>
             </div>
         </div>
     </div>

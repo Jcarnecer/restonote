@@ -72,7 +72,7 @@
                     <div class="navbar-brand ml-auto text-right" >
                         <!-- <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i> -->
                         <a href="#" data-toggle="popover" data-placement="bottom"  data-content="<?= $email ?>" data-trigger="hover" style="padding-bottom: 10px;">
-                            <img class="img-avatar" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
+                            <img class="img-avatar" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>"> <?= $user_name ?>
                         </a>
                     </div>
 
