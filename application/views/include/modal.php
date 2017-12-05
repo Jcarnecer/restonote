@@ -115,14 +115,15 @@
                               </div>
                            </div>
                         </div>
-                        <hr>
                         <div class="row task-note-list ">
                             
                         </div>
                         <input type="hidden" name="comments" />    
                 </form>
             </div>
-            <div class="card-footer text-muted"></div>
+            <div class="card-footer">
+                <small>Sticky Note Created: <?= $user_name ?></small>
+            </div>
         </div>
     </div>
 </div>
