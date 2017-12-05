@@ -5,40 +5,45 @@
         <div class="task-container modal-content" style="transition:0.2s;">
             <div class="modal-body">
                 <form method="post">
-                    <input type="text" class="heading" name="title" placeholder="Title" maxlength="20" required>
-                    <hr/>
-                    <textarea rows="5" class="body lead" name="body" placeholder="Description"></textarea>
-                    <div id="createTaskSetting" class="collapse">
-                        <!-- <hr/> -->
-                        <div class="form-group">
-                            <label>Privacy: </label>
-                            <select name="privacy" form="taskCreateForm">
-                                <option value="1">Public</option>
-                                <option value="2">Custom</option>
-                                <option value="3">Private</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <div class="task-tag-list">
-                                <label style="display:inline-block;">Tags: </label>
-                                <input type="text" class="task-tag" placeholder="Add Tags" style="display:inline-block;"/>
+                    <div class="card-header">
+                        <input type="text" class="heading" name="title" placeholder="Title" maxlength="20" required>
+                    </div>
+                    <div class="card-body">
+                        <textarea rows="5" class="body lead" name="body" placeholder="Description"></textarea>
+                        <hr>
+                        <div id="createTaskSetting" class="collapse">
+                            <!-- <hr/> -->
+                            <div class="form-group">
+                                <label>Privacy: </label>
+                                <select name="privacy" form="taskCreateForm">
+                                    <option value="1">Public</option>
+                                    <option value="2">Custom</option>
+                                    <option value="3">Private</option>
+                                </select>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <div class="task-tag-list">
+                                    <label style="display:inline-block;">Tags: </label>
+                                    <input type="text" class="task-tag" placeholder="Add Tags" style="display:inline-block;"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <?php foreach($colors as $color): ?>
-                        <button type="button" class="btn btn-circle btn-color" style="background-color:<?= $color ?>;" data-value="<?= $color ?>">
-                        <?php if($color == '#ffffff'): ?>
-                            <i class="fa fa-check fa-lg"></i>
-                        <?php else: ?>
-                            <i></i>
-                        <?php endif; ?>
-                        </button>
-                        <?php endforeach; ?>
-                        <input type="hidden" name="color" value="#ffffff" />
-                        <button type="submit" class="btn btn-link pull-right"><i class="fa fa-floppy-o fa-2x"></i></button>
-                        <button type="button" id="taskClose" style="display:none;" data-dismiss="modal"></button>
-                        <button type="button" class="btn btn-link pull-right" data-target="#createTaskSetting" data-toggle="collapse"><i class="fa fa-cog fa-2x"></i></button>
+                        <div class="form-group">
+                            <?php foreach($colors as $color): ?>
+                            <button type="button" class="btn btn-circle btn-color" style="background-color:<?= $color ?>;" data-value="<?= $color ?>">
+                                <?php if($color == '#ffffff'): ?>
+                                <i class="fa fa-check fa-lg"></i>
+                                <?php else: ?>
+                                <i></i>
+                                <?php endif; ?>
+                            </button>
+                            <?php endforeach; ?>
+                            <input type="hidden" name="color" value="#ffffff" />
+                            <button type="submit" class="btn btn-link pull-right"><i class="fa fa-floppy-o fa-2x"></i></button>
+                            <button type="button" id="taskClose" style="display:none;" data-dismiss="modal"></button>
+                            <button type="button" class="btn btn-link pull-right" data-target="#createTaskSetting" data-toggle="collapse"><i class="fa fa-cog fa-2x"></i></button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -54,7 +59,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" id="author-name"  style="display:inline-block; color: inherit; font-size: 15px; padding-right: 30px;">
+                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" id="author-name"  style="display:inline-block; color: inherit; font-size: 10px; padding-right: 30px;">
                                 <img id="author-avatar" class="fa fa-user-circle avatar" aria-hidden="true" >
                             </a>      
                         </div>
@@ -62,7 +67,7 @@
                            <div class="container-fuild">
                               <div class="row">
                                    <div style="display:inline-block;"> 
-                                       <h1 id="title" class="pamagat"></h1>
+                                       <span id="title" class="pamagat"></span>
                                    </div>  
                               </div>
                            </div>
@@ -89,26 +94,21 @@
             </div>
             <div class="modal-body ">
                 <form id="taskViewForm">
-                    <div class="laman-shiz">
-                        <div class="laman-shiz1">
-                            <div class="card">    
-                              <div class="card-body container-fluid">
-                                   <div id="description" class="tile-description" disabled></div>    
-                              </div>
-                            </div> 
-                        </div>
+                        <div id="description" class="tile-description card-title" disabled></div>   
+                        <hr>
+                        <p class="card-title">Tags: <span class="task-tag-list card-text" style="display:inline-block;"></span></p>
                         <hr>
                         <div class="form-group">
-                            <span class="task-note-label">Comments</span>
+                            <span class="card-title font-weight-bold">Comments</span>
                         </div>
-                        <div class="row task-note-create">
+                        <div class="row">
                            <div class="container">
                               <div class="row">
-                                  <div class="col-md-3">
+                                  <div class="col-md-2" style="padding-bottom: 20px;">
                                       <img class="img-avatar" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
                                   </div>
-                                  <div class="col-md-9">
-                                      <div class="task-note-box">
+                                  <div class="col-md-10">
+                                      <div class="task-note-box rounded border border-secondary bg-white">
                                           <textarea class="task-note" rows="2" placeholder="Add Comments"></textarea>
                                       </div>
                                   </div>    
@@ -116,30 +116,13 @@
                            </div>
                         </div>
                         <hr>
-                        <div class="row task-note-list">
+                        <div class="row task-note-list ">
                             
                         </div>
                         <input type="hidden" name="comments" />    
-                    </div>
-<!--                        <div class="vertical-line"></div>-->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="kanan-shiz">
-                                <div class="kanan">
-                                   <div class="row">
-                                       <div class="col-md-4"><span><i class="fa fa-tag" style="font-size: 30px; padding-right: 25px;" aria-hidden="true"></i></span></div>
-                                       <div class="col-md-4">  
-                                          <a href="#" style="color: inherit;" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Tags"><div class="task-tag-list" style="display:inline-block;"></div></a></div>
-                                       <div class="col-md-4"></div>
-                                   </div>
-                                   <hr>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </form>
             </div>
+            <div class="card-footer text-muted"></div>
         </div>
     </div>
 </div>

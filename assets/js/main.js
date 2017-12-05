@@ -152,7 +152,7 @@ $.fn.displayComment = function(items) {
                     data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${item['created_at']}">
                     </div>
                 </div>
-                <div class="col-md-10 card card-sm task-note-text task-note-list-item">
+                <div class="col-md-10 card card-sm task-note-text task-note-list-item rounded border border-secondary bg-white">
                     <a href="#">${data['first_name'] + ' ' + data['last_name']}</a>${' ' + item['body']}
                 </div>`
             );
@@ -199,7 +199,7 @@ $.fn.displayCard = function(items, column = 3) {
                         data-toggle="modal" data-target="#taskViewModal" data-value="${item['id']}" 
                         draggable="true" ondragstart="drag(event)" 
                         style="background-color:${item['color']};">
-                            
+                            <i class="pin"></i>
                             <div class="card-header">
                                 <span class="tile-title">
                                 ${item['title']}

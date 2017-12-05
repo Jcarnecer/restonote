@@ -44,7 +44,7 @@
                 <li class="">
                     <a class="task-create" href="#searchTaskModal" data-toggle="modal">
                         <i class="fa fa-search" aria-hidden="true"></i>
-                        <span>Search</span>
+                            <span>Search</span>
                     </a>
                 </li>
                 
