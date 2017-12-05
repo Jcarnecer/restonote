@@ -77,6 +77,7 @@ $(function () {
             $('#taskViewModal').find('[id="author-avatar"]').attr('src', "http://localhost/main/assets/img/avatar/" + data['user_id'] + ".png");
             $('#taskViewModal').find('[id="title"]').html(data['title']);
             $('#taskViewModal').find('[id="description"]').html(data['body'] ? data['body'] : '<small class="text-muted">No Description</small>');
+            $('#taskViewModal').find('[id="timestamp"]').html(data['created_at']);
             $('#taskViewModal').find('[id="date"] span').html(data['due_date']);
             $('#taskViewModal').find('[id="countdown"] span').html(data['remaining_days']);
             $('#taskViewModal').find('.task-tag-list').html('');
