@@ -243,9 +243,12 @@ html, body {
 .pamagat{
     font-weight: 700;
     font-size: 25px;
-    word-spacing: normal;
-    text-align: center;
-    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+/*    word-spacing: normal;*/
+/*    text-align: center;*/
 /*    font-family: 'Shadows Into Light', cursive;*/
 }
 

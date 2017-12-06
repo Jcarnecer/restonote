@@ -6,13 +6,14 @@
             <div class="modal-body">
                 <form method="post">
                     <div class="card-header">
-                        <input type="text" class="heading" name="title" placeholder="Title" maxlength="20" required>
+                        <input type="text" class="h3 font-weight-bold border-0 h-100 w-100" name="title" placeholder="Title" maxlength="20" required>
                     </div>
                     <div class="card-body">
-                        <textarea rows="5" class="body lead" name="body" placeholder="Description"></textarea>
-                        <hr>
-                        <div id="createTaskSetting" class="collapse">
-                            <!-- <hr/> -->
+                        <div class="w-100">
+                            <textarea rows="5" class="body lead card-text" name="body" placeholder="Description"></textarea>
+                        </div>
+                        <div id="createTaskSetting" class="collapse py-2 px-0">
+                            <hr/> 
                             <div class="form-group">
                                 <label>Privacy: </label>
                                 <select name="privacy" form="taskCreateForm">
@@ -21,7 +22,6 @@
                                     <option value="3">Private</option>
                                 </select>
                             </div>
-                            <hr>
                             <div class="form-group">
                                 <div class="task-tag-list">
                                     <label style="display:inline-block;">Tags: </label>
@@ -29,20 +29,28 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <?php foreach($colors as $color): ?>
-                            <button type="button" class="btn btn-circle btn-color" style="background-color:<?= $color ?>;" data-value="<?= $color ?>">
-                                <?php if($color == '#ffffff'): ?>
-                                <i class="fa fa-check fa-lg"></i>
-                                <?php else: ?>
-                                <i></i>
-                                <?php endif; ?>
-                            </button>
-                            <?php endforeach; ?>
-                            <input type="hidden" name="color" value="#ffffff" />
-                            <button type="submit" class="btn btn-link pull-right"><i class="fa fa-floppy-o fa-2x"></i></button>
-                            <button type="button" id="taskClose" style="display:none;" data-dismiss="modal"></button>
-                            <button type="button" class="btn btn-link pull-right" data-target="#createTaskSetting" data-toggle="collapse"><i class="fa fa-cog fa-2x"></i></button>
+                        <div class="form-group"> 
+                           <span class="float-left" style="width: auto;">
+                                <?php foreach($colors as $color): ?>
+                                <button type="button" class="btn btn-circle btn-color" style="background-color:<?= $color ?>;" data-value="<?= $color ?>">
+                                    <?php if($color == '#ffffff'): ?>
+                                    <i class="fa fa-check fa-lg"></i>
+                                    <?php else: ?>
+                                    <i></i>
+                                    <?php endif; ?>
+                                </button>
+                                <?php endforeach; ?>
+                             <input type="hidden" name="color" value="#ffffff" />
+                           </span>
+                           <div class="btn-group float-right" style="width: 35%;">
+                               <button type="button"  class="btn btn-primary" data-target="#createTaskSetting" data-toggle="collapse">
+                                   <i class="fa fa-cog"></i> More
+                               </button>
+                               <button type="submit" class="btn btn-primary ">
+                                   <i class="fa fa-floppy-o"></i> Save
+                               </button>
+                               <button type="button" id="taskClose" style="display:none;" data-dismiss="modal"></button>
+                           </div>
                         </div>
                     </div>
                 </form>
@@ -56,24 +64,13 @@
     <div class="modal-dialog">
         <div class="task-container modal-content" style="transition:0.2s;">
             <div class="modal-header card-header">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-4">
+                        <span class="float-left">
                             <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" id="author-name"  style="display:inline-block; color: inherit; font-size: 10px; padding-right: 30px;">
-                                <img id="author-avatar" class="fa fa-user-circle avatar" aria-hidden="true" >
+                                <img id="author-avatar" class="fa fa-user-circle avatar rounded-circle" aria-hidden="true" alt="fa fa-user-circle" style="width: 50px; height: 50px;" >
                             </a>      
-                        </div>
-                        <div class="col-md-4 col-md-offset-4">
-                           <div class="container-fuild">
-                              <div class="row">
-                                   <div style="display:inline-block;"> 
-                                       <span id="title" class="pamagat"></span>
-                                   </div>  
-                              </div>
-                           </div>
-                            
-                        </div>
-                        <div class="col-md-4">
+                        </span>
+                        <div id="title" class="pamagat"></div> 
+                        <span class="float-right">
                             <div class="dropdown">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 10px;">
                                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -87,10 +84,7 @@
                                     <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Archive</a>
                                 </div>        
                             </div>
-                        </div>
-                        <div class="col-md-4"></div>
-                    </div> 
-                </div> 
+                        </span>
             </div>
             <div class="modal-body ">
                 <form id="taskViewForm">
