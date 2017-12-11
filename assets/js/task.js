@@ -3,6 +3,7 @@ $(function () {
     var $container = null;
     var $kanbanPanel = [$('#todoPanel>.row'), $('#doingPanel>.row'), $('#donePanel>.row')];
     var column = 0;
+    var storedTasks = null;
 
 
     $container = $('#taskTileList')
@@ -105,12 +106,20 @@ $(function () {
 
 
     // Search
-    $(document).on('input', '#taskSearch', function () {
+    $(document).on('click', '[href="#searchTaskModal"]', function(e) {
+        
+        storedTasks = storeTask();
+    });
+    
+    
+    $(document).on('input', '#taskSearch', function (e) {
 
-        $(document).getCard().done(function(data){
+        if(e.which == 13) {
 
-            $(document).searchCard(data, $('#taskSearch').val());
-        });
+            e.preventDefault();
+        }
+        
+        $(document).searchCard(storedTasks, $(this).val());
     });
 
 

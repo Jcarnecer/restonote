@@ -15,6 +15,12 @@ function setUserId(id) { userId = id; }
 function getUserId() { return userId; }
 
 
+function storeTask() {
+
+    return $(document).getCard(null, true).responseJSON;
+}
+
+
 // AJAX
 $.fn.getUser = function(userId, sync = false) {
 
@@ -28,10 +34,11 @@ $.fn.getUser = function(userId, sync = false) {
 }
 
 
-$.fn.getCard = function(cardID = null) {
+$.fn.getCard = function(cardID = null, sync = false) {
 
     return $.ajax({
 
+        async: !sync,
         type: 'GET',
         url: `${baseUrl}api/card/${getAuthorId()}` + (cardID != null ? `/${cardID}` : ''),
         dataType: 'json'
@@ -71,6 +78,32 @@ $.fn.postCardComment = function(details, cardID) {
         data: details,
         dataType: 'json'
     })
+}
+
+
+// Builder
+function taskBuilder(task, modalDismiss = false) {
+
+    var taskString = "";
+    var actorsAppend = "";
+    var contributorsAppend = "";
+    var iconAppend = "";
+    var modalDismissAppend = modalDismiss ? 'data-dismiss="modal"': '';
+
+    var taskString = 
+        `<div class="card my-1 rounded kanban-task task-view"
+        data-toggle="modal" data-target="#taskViewModal" data-value="${task['id']}" data-parent="${task['column_id']}" 
+        ${modalDismissAppend} 
+        style="background-color:${task['color']};">
+
+        <div class="card-body" ${contributorsAppend}
+        draggable="true" ondragstart="drag(event)">
+        <h5 class="card-title font-weight-bold">${iconAppend + task['title']}</h5>
+        </div>
+
+        </div>`;
+
+    return taskString;
 }
 
 
@@ -236,26 +269,39 @@ $.fn.displayCard = function(items, column = 3) {
 
 $.fn.searchCard = function(items, keyword) {
 
-    $('#taskSearchQuery').html('');
+    $('#taskSearchList').html('');
+    
+    if(keyword != '') {
 
-    if(keyword != ''){
         $.each(items, function(i, item) {
 
-            if(item['title'].toLowerCase().indexOf(keyword.toLowerCase()) != -1)
+            if(item['title'].toLowerCase().indexOf(keyword.toLowerCase()) != -1) {
 
-                $('#taskSearchQuery').append(
-                    `<li class="list-group-item task-search-item" data-dismiss="modal" style="background-color:${item['color']};">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-1"><a class="task-mark-done" data-value="${item['id']}"><span class="glyphicon glyphicon-` + (item['status'] == 1 ? `unchecked` : `check`) + `"></span></a></div>
-                                <div class="col-md-10" data-target="#taskViewModal" data-toggle="modal" data-value="${item['id']}">${item['title']}</div>
-                                <div class="col-md-1"><a class="task-edit" href="#taskModifyModal" data-toggle="modal" data-value="${item['id']}"><span class="glyphicon glyphicon-edit"></span></a></div>
-                            </div>
-                        </div>
-                    </li>`
-                );
+                $('#taskSearchList').append(taskBuilder(item, true));
+            }
         });
     }
+    
+//    $('#taskSearchQuery').html('');
+//
+//    if(keyword != ''){
+//        $.each(items, function(i, item) {
+//
+//            if(item['title'].toLowerCase().indexOf(keyword.toLowerCase()) != -1)
+//
+//                $('#taskSearchQuery').append(
+//                    `<li class="list-group-item task-search-item" data-dismiss="modal" style="background-color:${item['color']};">
+//                        <div class="container-fluid">
+//                            <div class="row">
+//                                <div class="col-md-1"><a class="task-mark-done" data-value="${item['id']}"><span class="glyphicon glyphicon-` + (item['status'] == 1 ? `unchecked` : `check`) + `"></span></a></div>
+//                                <div class="col-md-10" data-target="#taskViewModal" data-toggle="modal" data-value="${item['id']}">${item['title']}</div>
+//                                <div class="col-md-1"><a class="task-edit" href="#taskModifyModal" data-toggle="modal" data-value="${item['id']}"><span class="glyphicon glyphicon-edit"></span></a></div>
+//                            </div>
+//                        </div>
+//                    </li>`
+//                );
+//        });
+//    }
 };
 
 // Kanban
