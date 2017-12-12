@@ -122,14 +122,6 @@
         </div>
     </div>
 </div>
-<!-- Time Modal-->
-<div id="timeModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <p type="text" id="taskSearch">Hello</p>
-        </div>
-    </div>
-</div>
 
 <!-- Task Search Modal -->
 <div id="searchTaskModal" class="modal fade" role="dialog">
