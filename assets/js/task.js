@@ -3,6 +3,7 @@ $(function () {
     var $container = null;
     var $kanbanPanel = [$('#todoPanel>.row'), $('#doingPanel>.row'), $('#donePanel>.row')];
     var column = 0;
+    var storedTasks = null;
 
 
     $container = $('#taskTileList')
@@ -74,9 +75,9 @@ $(function () {
             $('#taskViewModal').find('.dropdown a').attr('data-value', data['id']);
             $('#taskViewModal').find('form').attr('data-value', data['id']);
             $('#taskViewModal').find('[id="author-name"]').attr('data-content', data['author']);
-            $('#taskViewModal').find('[id="author-avatar"]').attr('src', "http://localhost/main/assets/img/avatar/" + data['user_id'] + ".png");
             $('#taskViewModal').find('[id="title"]').html(data['title']);
-            $('#taskViewModal').find('[id="description"]').html(data['body']);
+            $('#taskViewModal').find('[id="description"]').html(data['body'] ? data['body'] : '<small class="text-muted">No Description</small>');
+            $('#taskViewModal').find('[id="timestamp"]').html(data['created_at']);
             $('#taskViewModal').find('[id="date"] span').html(data['due_date']);
             $('#taskViewModal').find('[id="countdown"] span').html(data['remaining_days']);
             $('#taskViewModal').find('.task-tag-list').html('');
@@ -104,12 +105,20 @@ $(function () {
 
 
     // Search
-    $(document).on('input', '#taskSearch', function () {
+    $(document).on('click', '[href="#searchTaskModal"]', function(e) {
+        
+        storedTasks = storeTask();
+    });
+    
+    
+    $(document).on('input', '#taskSearch', function (e) {
 
-        $(document).getCard().done(function(data){
+        if(e.which == 13) {
 
-            $(document).searchCard(data, $('#taskSearch').val());
-        });
+            e.preventDefault();
+        }
+        
+        $(document).searchCard(storedTasks, $(this).val());
     });
 
 
@@ -207,7 +216,7 @@ $(function () {
                 
                 $noteInput.closest('form').find('.task-note-list').append(
                     `<div class="col-md-2 task-note-list-item">
-                        <img class="img-avatar-sm" src="http://localhost/main/assets/img/avatar/${getUserId()}.png" 
+                        <img class="img-avatar-sm" src="${avatarUrl}" 
                     data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="Just now">
                         </div>
                     </div>

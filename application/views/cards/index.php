@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="corkboard-border inner-content">
         <div class="corkboard">                
-            <div class="container-fluid text-center" style="margin-bottom: 50px;">
+            <div class="card container-fluid text-center" style="margin-bottom: 50px;">
                 <h1 style="margin: 30px auto;">Welcome, <?= $user_name ?>!</h1>
             </div>
 
