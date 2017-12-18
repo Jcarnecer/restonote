@@ -99,7 +99,9 @@
                            <div class="container">
                               <div class="row">
                                   <div class="col-md-2" style="padding-bottom: 20px;">
-                                      <img class="img-avatar" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
+                                     <h2 class="text-center">
+                                        <img class="avatar" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
+                                     </h2>
                                   </div>
                                   <div class="col-md-10">
                                       <div class="task-note-box rounded border border-secondary bg-white">
