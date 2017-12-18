@@ -22,6 +22,7 @@ class Views extends CI_Controller {
 		$data['user_id']		= $this->session->user->id;
 		$data['user_name']		= $this->session->user->first_name.' '.$this->session->user->last_name;
         $data['email']			= $this->session->user->email_address;
+        $data['avatar_url']		= $this->session->user->avatar_url;
 		$data['colors']			= unserialize(COLORS);
 
 		$this->load->view('include/header', $data);
@@ -37,6 +38,7 @@ class Views extends CI_Controller {
 		$data['user_id']		= $this->session->user->id;
 		$data['user_name']		= $this->session->user->first_name.' '.$this->session->user->last_name;
         $data['email']			= $this->session->user->email_address;
+        $data['avatar_url']		= $this->session->user->avatar_url;
 		$data['teams']			= $this->team_model->get_all($this->session->user->id);
 		$data['colors']			= unserialize(COLORS);
 		$data['task_type']		= 'personal';

@@ -66,7 +66,7 @@
             <div class="modal-header card-header">
                         <span class="float-left">
                             <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" id="author-name"  style="display:inline-block; color: inherit; font-size: 10px; padding-right: 30px;">
-                                <img id="author-avatar" class="fa fa-user-circle avatar rounded-circle" aria-hidden="true" alt="fa fa-user-circle" style="width: 50px; height: 50px;" >
+                                <img id="author-avatar" class="img-avatar-lg" src="<?= $avatar_url?>" >
                             </a>      
                         </span>
                         <div id="title" class="pamagat"></div> 
@@ -99,7 +99,7 @@
                            <div class="container">
                               <div class="row">
                                   <div class="col-md-2" style="padding-bottom: 20px;">
-                                      <img class="img-avatar" src="<?= 'http://localhost/main/assets/img/avatar/'.$user_id.'.png' ?>">
+                                      <img class="img-avatar" src="<?= $avatar_url ?>">
                                   </div>
                                   <div class="col-md-10">
                                       <div class="task-note-box rounded border border-secondary bg-white">
