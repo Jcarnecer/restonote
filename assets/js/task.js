@@ -75,7 +75,6 @@ $(function () {
             $('#taskViewModal').find('.dropdown a').attr('data-value', data['id']);
             $('#taskViewModal').find('form').attr('data-value', data['id']);
             $('#taskViewModal').find('[id="author-name"]').attr('data-content', data['author']);
-            $('#taskViewModal').find('[id="author-avatar"]').attr('src', "http://localhost/main/assets/img/avatar/" + data['user_id'] + ".png");
             $('#taskViewModal').find('[id="title"]').html(data['title']);
             $('#taskViewModal').find('[id="description"]').html(data['body'] ? data['body'] : '<small class="text-muted">No Description</small>');
             $('#taskViewModal').find('[id="timestamp"]').html(data['created_at']);
@@ -217,7 +216,7 @@ $(function () {
                 
                 $noteInput.closest('form').find('.task-note-list').append(
                     `<div class="col-md-2 task-note-list-item">
-                        <img class="img-avatar-sm" src="http://localhost/main/assets/img/avatar/${getUserId()}.png" 
+                        <img class="img-avatar-sm" src="${avatarUrl}" 
                     data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="Just now">
                         </div>
                     </div>

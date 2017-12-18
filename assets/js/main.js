@@ -1,6 +1,7 @@
 const baseUrl = window.location.origin + '/note/';
 var userId = null;
 var authorId = null;
+var avatarUrl = null;
 
 
 function setAuthorId(id) { authorId = id; }
@@ -19,7 +20,14 @@ function storeTask() {
 
     return $(document).getCard(null, true).responseJSON;
 }
+// Initiate
+$(function() {
 
+$(document).getUser(getUserId(), true).done(function(data) {
+    avatarUrl = data['avatar_url'];
+});
+
+});
 
 // AJAX
 $.fn.getUser = function(userId, sync = false) {
@@ -181,7 +189,7 @@ $.fn.displayComment = function(items) {
         $(document).getUser(item['author'], true).always(function(data) {
             $('.task-note-list').append(
                 `<div class="col-md-2 task-note-list-item">
-                    <img class="img-avatar-sm" src="http://localhost/main/assets/img/avatar/${item['author']}.png" 
+                    <img class="img-avatar-sm" src="${data['avatar_url']}" 
                     data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="${item['created_at']}">
                     </div>
                 </div>
