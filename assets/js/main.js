@@ -1,4 +1,4 @@
-const baseUrl = window.location.origin + '/';
+const baseUrl = window.location.origin === "http://note.payakapps.com" ? "http://note.payakapps.com/" : "http://localhost/note/";
 var userId = null;
 var authorId = null;
 var avatarUrl = null;
