@@ -66,7 +66,7 @@
             <div class="modal-header card-header">
                         <span class="float-left">
                             <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" id="author-name"  style="display:inline-block; color: inherit; font-size: 10px; padding-right: 30px;">
-                                <img id="author-avatar" class="img-avatar-lg" src="<?= $avatar_url?>" >
+                                <img id="author-avatar" class="img-avatar-lg" src="" >
                             </a>      
                         </span>
                         <div id="title" class="pamagat"></div> 
