@@ -118,7 +118,7 @@
                 </form>
             </div>
             <div class="card-footer">
-                <small class="float-left">Created By: <span><?= $user_name ?></span></small>
+                <small class="float-left">Created By: <span id="card-author"></span></small>
                 <small class="float-right text-right"><span id="timestamp"></span></small>
             </div>
         </div>
