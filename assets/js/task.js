@@ -67,16 +67,16 @@ $(function () {
 
         $(document).getCard($(this).attr('data-value')).done(function (data) {
 
-            if(data['session_user']!=data['user_id'])
-                document.getElementById('card-menu').style.visibility = "hidden";
-            else
-                document.getElementById('card-menu').style.visibility = "visible";
-
+            document.getElementById('card-menu').style.visibility = "hidden";
+            if(data['status']== 1)
+                if(data['session_user']==data['user_id'])
+                    document.getElementById('card-menu').style.visibility = "visible";
             $('#taskViewModal').find('.dropdown a').attr('data-value', data['id']);
             $('#taskViewModal').find('form').attr('data-value', data['id']);
             $('#taskViewModal').find('[id="author-name"]').attr('data-content', data['author']);
             $(document).getUser(data['user_id']).done(function(item) {
                 $('#taskViewModal').find('[id="author-avatar"]').attr('src', item['avatar_url']);
+                $('#taskViewModal').find('[id="card-author"]').html(item['first_name'] + ' ' + item['last_name']);
             })
             $('#taskViewModal').find('[id="title"]').html(data['title']);
             $('#taskViewModal').find('[id="description"]').html(data['body'] ? data['body'] : '<small class="text-muted">No Description</small>');
