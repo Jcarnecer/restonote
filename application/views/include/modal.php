@@ -86,6 +86,7 @@
                         <div id="description" class="tile-description card-title" disabled></div>   
                         <hr>
                         <p class="card-title">Tags: <span class="task-tag-list card-text" style="display:inline-block;"></span></p>
+<!--                         
                         <hr>
                         <div class="form-group">
                             <span class="card-title font-weight-bold">Comments</span>
@@ -109,7 +110,7 @@
                         <div class="row task-note-list ">
                             
                         </div>
-                        <input type="hidden" name="comments" />    
+                        <input type="hidden" name="comments" />     -->
                 </form>
             </div>
             <div class="card-footer">
