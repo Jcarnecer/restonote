@@ -137,6 +137,8 @@ $.fn.resetForm = function() {
     $('.task-container').find('.btn-color').find('i').removeClass('fa fa-check fa-lg');
     $('.task-container').find(`button[data-value="#ffffff"] i`).addClass('fa fa-check fa-lg');
     $('.task-container').css('background-color', '#ffffff');
+    $('.task-tile').find('.card').css('background-color', '#ffffff', 'height: auto;');
+    $('#taskModifyModal .card').css('background-color', '#ffffff');
 };
 
 
@@ -208,7 +210,7 @@ $.fn.displayCard = function(items, column = 3) {
     var status = [1, 4, 2];
 
     $containers.push($('#taskTileList'));
-    column = 4;
+    column = 3;
 
     colNumber = 12/column;
 
@@ -234,26 +236,20 @@ $.fn.displayCard = function(items, column = 3) {
             if(status[i] == item['status']) {
 
                 $container.prepend(
-                    `<div data-order="${j}" class="col-md-${colNumber}">
-
-                        <div class="task-tile task-view w3-card-2 w3-hover-shadow" 
-                        data-toggle="modal" data-target="#taskViewModal" data-value="${item['id']}" 
-                        draggable="true" ondragstart="drag(event)" 
-                        style="background-color:${item['color']};">
-                            <i class="pin"></i>
-                            <div class="card-header">
-                                <span class="tile-title">
-                                ${item['title']}
-                                </span>
+                    `<div data-order="${j}" class="col-md-${colNumber}"> 
+                            <div class="w3-hover-shadow" style="background-color:${item['color']};">       
+                                    <div class="task-tile task-view" data-toggle="modal" data-target="#taskViewModal" data-value="${item['id']}">
+                                            <div class="card-header">
+                                                <h3 class="card-title">
+                                                    ${item['title']}
+                                                </h3>
+                                            </div>
+                                            <div class="container" >
+                                                <h3 class="tile-description1">${item['body']}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
-                            <div class="container-fluid" >
-                                <div class="row">
-                                    <h3 class="tile-description1">${item['body']}</h3>
-                                </div>
-                            </div>
-
-                        </div>
-                        
                     </div>`
                 );
             }

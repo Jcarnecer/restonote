@@ -1,11 +1,5 @@
 <div class="container-fluid">
-    <div class="corkboard-border inner-content">
-        <div class="corkboard">                
-            <div class="card container-fluid text-center" style="margin-bottom: 50px;">
-                <h1 style="margin: 30px auto;">Welcome, <?= $user_name ?>!</h1>
-            </div>
-
-            <div class="container-fluid" >
+            <div class="container-fluid create-bulletin">
                 <div id="personalCreate" class="task-container container-fluid w3-card-2 w3-hover-shadow">
 
                     <form id="taskCreateForm" method="post">
@@ -68,9 +62,8 @@
             </div>
 
 
-        </div>
-
-    </div>
+        
+  
 
 </div>
 

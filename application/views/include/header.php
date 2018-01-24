@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
         
-        <title>Task</title>
+        <title>Bulletin Board</title>
 
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Slabo+27px">
@@ -60,7 +60,7 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <a class="navbar-brand" href="<?= base_url('tasks'); ?>">Task</a>
+                    <a class="navbar-brand" href="<?= base_url('tasks'); ?>">Bulletin Board</a>
 
                     <span class="ml-auto">
                         <a class="navbar-brand" href="#searchTaskModal" data-toggle="modal"><i class="fa fa-search"></i> Search</a>

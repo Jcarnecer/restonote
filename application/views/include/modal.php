@@ -5,10 +5,10 @@
         <div class="task-container modal-content" style="transition:0.2s;">
             <div class="modal-body">
                 <form method="post">
-                    <div class="card-header">
+                    <div class="modal-header">
                         <input type="text" class="h3 font-weight-bold border-0 h-100 w-100" name="title" placeholder="Title" maxlength="20" required>
                     </div>
-                    <div class="card-body">
+                    <div class="modal-body">
                         <div class="w-100">
                             <textarea rows="5" class="body lead card-text" name="body" placeholder="Description"></textarea>
                         </div>
@@ -63,13 +63,8 @@
 <div id="taskViewModal" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="task-container modal-content" style="transition:0.2s;">
-            <div class="modal-header card-header">
-                        <span class="float-left">
-                            <a href="#" data-toggle="popover" data-trigger="hover" data-placement="left" id="author-name"  style="display:inline-block; color: inherit; font-size: 10px; padding-right: 30px;">
-                                <img id="author-avatar" class="img-avatar-lg" src="" >
-                            </a>      
-                        </span>
-                        <div id="title" class="pamagat"></div> 
+            <div class="modal-header">
+                        <h2 id="title" class="tile-title float-left"></h2> 
                         <span class="float-right">
                             <div class="dropdown">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 10px;">
