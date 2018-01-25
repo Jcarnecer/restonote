@@ -78,8 +78,8 @@ class Card_model extends CI_Model {
 	public function get_tags($id = null) {
 
 		return $this->db->select('name')
-			->from('tags')
-			->join('cards_tagging', 'cards_tagging.tag_id = tags.id')
+			->from('kb_tags')
+			->join('cards_tagging', 'cards_tagging.tag_id = kb_tags.id')
 			->where('cards_tagging.card_id', $id)
 			->get()
 			->result();
