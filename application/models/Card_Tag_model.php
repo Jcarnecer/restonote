@@ -6,7 +6,7 @@ class Card_Tag_model extends CI_Model {
 	public function get_id($name) {
 		
 		return $this->db->select('id')
-			->from('tags')
+			->from('kb_tags')
 			->where('name', $name)
 			->get()
 			->row()->id;
@@ -51,8 +51,8 @@ class Card_Tag_model extends CI_Model {
 
 		$names = [];
 		$tags  =  $this->db->select('name')
-			->from('tags')
-			->join('cards_tagging', 'cards_tagging.tag_id = tags.id')
+			->from('kb_tags')
+			->join('cards_tagging', 'cards_tagging.tag_id = kb_tags.id')
 			->where('cards_tagging.card_id', $id)
 			->get()
 			->result();
