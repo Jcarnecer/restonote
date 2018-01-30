@@ -19,37 +19,6 @@ html, body {
     display: none;
 }
 
-
-/* Left Column for Modal*/
-/*
-.header-shiz{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
-}
-*/
-
-.laman-shiz{
-    width: 70%;
-    float: left;
-    padding-right: 30px;
-}
-
-.laman-shiz1{
-    border: 1px;   
-}
-
-.laman-shiz2{
-/*
-    height: 100px;
-    overflow-y: auto;
-    width: 100%;
-*/  overflow-x: hidden;
-    overflow-y: hidden;
-    white-space: pre-line;
-    font-weight: 500;
-    font-size: 30px;
-    font-family: 'Shadows Into Light', cursive;
-}
-
 /* Avatar Icon */
 
 .avatar{
@@ -58,31 +27,6 @@ html, body {
     border-radius: 50%;
 }
 
-/* Right Column for Modal*/
-.kanan-shiz{
-    float: left;
-    padding-right: 10px;
-}
-
-.kanan{
-    margin-bottom: 50px;
-    float: right;    
-/*    margin-left: -20px;*/
-}
-.vertical-line{
-    border-left: 1px solid #95a5a6;
-    height: 400px;
-    right:  270px;
-    position: absolute;
-    margin-left: -30px;
-    top: auto;
-    bottom: auto;
-}
-
-.date-shiz{
-    display: inline-block;
-/*    margin-left: 30px;*/
-}
 /* Task Board */
 .task-tag-board {
     margin: 10px;
@@ -239,18 +183,6 @@ html, body {
 /* end-of-Tag_modal */
 
 
-/* View_task_modal */
-.pamagat{
-    font-weight: 700;
-    font-size: 25px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-/*    word-spacing: normal;*/
-/*    text-align: center;*/
-/*    font-family: 'Shadows Into Light', cursive;*/
-}
 
 .heading {
     font-weight: 750;
