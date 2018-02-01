@@ -236,20 +236,19 @@ $.fn.displayCard = function(items, column = 3) {
             if(status[i] == item['status']) {
 
                 $container.prepend(
-                    `<div data-order="${j}" class="col-md-${colNumber}"> 
-                            <div class="w3-hover-shadow" style="background-color:${item['color']};">       
-                                    <div class="task-tile task-view" data-toggle="modal" data-target="#taskViewModal" data-value="${item['id']}">
-                                            <div class="card-header">
-                                                <h3 class="card-title">
-                                                    ${item['title']}
-                                                </h3>
-                                            </div>
-                                            <div class="container" >
-                                                <h3 class="tile-description1">${item['body']}</h3>
-                                            </div>
-                                        </div>
-                                    </div>
+                    `<div data-order="${j}"> 
+                         
+                            <div class="card task-tile task-view" data-toggle="modal" data-target="#taskViewModal" data-value="${item['id']}" style="background-color:${item['color']};">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0">
+                                        ${item['title']}
+                                    </h4>
+                                </div>
+                                <div class="card-body" >
+                                    <p>${item['body']}</p>
+                                </div>
                             </div>
+                        
                     </div>`
                 );
             }
