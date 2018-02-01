@@ -60,11 +60,11 @@
             <div class="card">
                 <div class="card-header">
                     <h4 id="title" class="tile-title float-left"></h4>   
-                    <div class="dropdown d-inline show">
+                    <div class="dropdown d-inline pl-2 show">
                         <a href="#" id="card-menu" class="dropdwon-toggle" data-toggle="dropdown" id ="taskModalDropdown">
                             <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="task-edit dropdown-item" href="#taskModifyModal" data-toggle="modal" data-dismiss="modal">Edit Post</a>
                             <a href="#" class="task-mark-done dropdown-item" data-dismiss="modal">Archive</a>
                         </div>        
