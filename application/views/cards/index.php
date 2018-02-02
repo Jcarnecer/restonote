@@ -5,7 +5,7 @@
             <form id="taskCreateForm" method="post">
                 <div class="card">
                     <div class="card-header border-bottom-0">
-                        <input type="text" data-target="#createCollapse" data-toggle="collapse" class="input-tag" name="title" placeholder="Enter event here">
+                        <input type="text" data-target="#createCollapse" data-toggle="collapse" class="input-tag" name="title" placeholder="Enter event here" maxlength="25">
                     </div>
                     <div id="createCollapse" class="collapse">
                         <div class="card-body">
