@@ -14,6 +14,8 @@ $route['api/user/(:any)']['GET'] = 'Users/get/$1';
 
 
 # card
+$route['api/note/get_all']['GET'] = 'Cards/get_all';
+
 $route['api/card/(:any)']['POST'] = 'Cards/post/$1';
 $route['api/card/(:any)']['GET'] = 'Cards/get/$1';
 
