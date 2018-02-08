@@ -21,7 +21,7 @@
     </head>
     <body>
 
-        <div id="sidebar" style="overflow-y: auto; margin-left: -210px;">
+        <div id="sidebar" style="overflow-y: auto;">
 
             <!-- sidebar menu start-->
             <div id="nav-icon-close" class="custom-toggle">
@@ -51,11 +51,11 @@
             <!-- sidebar menu end-->
         </div>
 
-        <div class="main-content animation h-100">
+        <div class="main-content h-100">
 
             <div class="topbar">
                 <nav class="navbar navbar-custom clearfix">
-                    <div id="nav-icon-open" class="custom-toggle hidden-toggle d-block">
+                    <div id="nav-icon-open" class="custom-toggle hidden-toggle">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -63,8 +63,8 @@
                     <a class="navbar-brand" href="<?= base_url('tasks'); ?>">Bulletin Board</a>
 
                     <span class="ml-auto">
-                        <a class="navbar-brand" href="#searchTaskModal" data-toggle="modal"><i class="fa fa-search"></i> Search</a>
-                        <a class="navbar-brand" href="#" data-toggle="popover" data-placement="bottom"  data-content="<?= $email ?>" data-trigger="hover">
+                        <a href="#searchTaskModal" data-toggle="modal"><i class="fa fa-search"></i> Search</a>
+                        <a href="#" data-toggle="popover" data-placement="bottom"  data-content="<?= $email ?>" data-trigger="hover">
                             <!-- <i class="fa fa-user-circle"></i> <?= $user_name ?> -->
                             <img class="img-avatar" src="<?= $avatar_url ?>"> <?= $user_name ?>
                         </a>

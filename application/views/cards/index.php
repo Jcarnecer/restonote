@@ -1,33 +1,35 @@
 <div class="container-fluid">
-            <div class="container-fluid create-bulletin">
-                <div id="personalCreate" class="task-container container-fluid w3-card-2 w3-hover-shadow">
+    <!-- <div class="create-bulletin"> -->
+        <div id="personalCreate" class="task-container w3-card-2 w3-hover-shadow">
 
-                    <form id="taskCreateForm" method="post">
-
-                        <input type="text" data-target="#createCollapse" data-toggle="collapse" class="input-tag" name="title" placeholder="What's your plan, <?= $user_name ?>?">
-
-                        <div id="createCollapse" class="collapse">
+            <form id="taskCreateForm" method="post">
+                <div class="card">
+                    <div class="card-header border-bottom-0">
+                        <input type="text" data-target="#createCollapse" data-toggle="collapse" class="input-tag" name="title" placeholder="Enter event here" maxlength="25">
+                    </div>
+                    <div id="createCollapse" class="collapse">
+                        <div class="card-body">
+                    
                             <textarea id="addTask" rows="2" class="body lead" name="body" placeholder="Description"></textarea>
 
                             <div id="dateTaskSettings" class="collapse">    
                                 <hr>
-                                <div class="container-fluid">
+                                <div class="py-2 px-0">
                                     <label>Privacy: </label>
                                     <select name="privacy" form="taskCreateForm">
                                         <option value="1">Public</option>
                                         <option value="2">Custom</option>
                                         <option value="3">Private</option>
                                     </select>
-                                </div>
-                                <div class="container-fluid">    
+        
                                     <div class="task-tag-list">
-                                        <label style="display:inline-block;">Tags: </label>
-                                        <input type="text" class="task-tag" placeholder="Add Tags" style="display:inline-block;"/>
+                                        <label class="d-inline">Tags: </label>
+                                        <input type="text" class="task-tag d-inline" placeholder="Add Tags"/>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="container-fluid" style="padding-top: 20px; padding-bottom: 20px; overflow:auto;">
+                            <div class="py-1 px-0">
                                 <?php foreach($colors as $color): ?>
                                 <button type="button" class="btn btn-circle btn-color" style="background-color:<?= $color ?>;" data-value="<?= $color ?>">
                                     <?php if($color == '#ffffff'): ?>
@@ -38,32 +40,33 @@
                                 </button>
                                 <?php endforeach; ?>
                                 <input type="hidden" name="color" value="#ffffff"/>
-                                <button type="submit" form="taskCreateForm" id="taskSubmit" class="btn btn-primary pull-right" data-toggle="collapse" data-target="#createCollapse" style="margin: 0px 5px;">
+                                <button type="submit" form="taskCreateForm" id="taskSubmit" class="btn custom-button float-right" data-toggle="collapse" data-target="#createCollapse">
                                     <i class="fa fa-floppy-o fa-lg"></i> Save
                                 </button>
-                                <!-- <input type="submit" class="btn btn-primary float-right" value="Submit"> -->
-                                <button type="button" class="btn btn-primary pull-right" data-target="#dateTaskSettings" data-toggle="collapse" style="margin: 0px 5px;">
+                                <button type="button" class="btn transparent-button float-right" data-target="#dateTaskSettings" data-toggle="collapse">
                                     <i class="fa fa-cog fa-lg"></i> More
                                 </button>
                             </div>
 
                         </div>
-
-                    </form>
-
+                    </div>
                 </div>
-            </div>
+                <!-- <input type="text" data-target="#createCollapse" data-toggle="collapse" class="input-tag" name="title" placeholder="What's your plan, <?= $user_name ?>?"> -->
+                
+                <!-- <hr class="mt-0"> -->
+                
+
+            </form>
+
+        <!-- </div> -->
+    </div>
 
 
-            <div class="container-fluid task-tag-board">
-                <div id="taskTileList" class="row">
-
-                </div>
-            </div>
-
-
-        
-  
+    <div class="task-tag-board">
+        <div id="taskTileList" class="card-columns">
+            
+        </div>
+    </div>
 
 </div>
 

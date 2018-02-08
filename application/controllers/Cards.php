@@ -73,6 +73,13 @@ class Cards extends CI_Controller {
 	}
 
 
+	# Fetch All Cards
+	public function get_all() {
+		$this->card_model->order_by('updated_at', 'desc');
+		echo json_encode($this->card_model->get_all($this->session->user->company_id));
+	}
+
+
 	# comments
 	public function post_comments($card_id) {
 		
