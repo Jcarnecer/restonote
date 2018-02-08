@@ -118,16 +118,6 @@ function taskBuilder(task, modalDismiss = false) {
 // Task
 $.fn.resetForm = function() {
     
-    // $('#taskModifyModal').find('form')[0].reset();
-    // $('#taskModifyModal').find('.task-actor-list').siblings('input').remove();
-    // $('#taskModifyModal').find('.task-actor-list').find('span.badge').remove();
-    // $('#taskModifyModal').find('.task-tag-list').siblings('input').remove();
-    // $('#taskModifyModal').find('.task-tag-list').find('span.badge').remove();
-    // $('#taskModifyModal').find('.modal-content').css('background-color', '#ffffff');
-    // $('#taskModifyModal').find('.btn-color').find('i').removeClass('fa fa-check fa-lg');
-    // $('#taskModifyModal').find(`button[data-value="#ffffff"] i`).addClass('fa fa-check fa-lg');
-
-    
     $('#personalCreate').find('form')[0].reset();
 
     $('.task-container').find('.task-actor-list').siblings('input').remove();
@@ -138,7 +128,7 @@ $.fn.resetForm = function() {
     $('.task-container').find(`button[data-value="#ffffff"] i`).addClass('fa fa-check fa-lg');
     $('.task-container').css('background-color', '#ffffff');
     $('.task-tile').find('.card').css('background-color', '#ffffff', 'height: auto;');
-    $('#taskModifyModal .card').css('background-color', '#ffffff');
+    $('.task-container .card').css('background-color', '#ffffff');
 };
 
 
