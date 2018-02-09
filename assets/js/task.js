@@ -9,13 +9,24 @@ $(function () {
     $container = $('#taskTileList')
     column = 4;
 
+    $(document).on('click','#taskCreateForm', function(){
+        var form = document.getElementById("#taskCreateForm");
+        form.addEventListener('focus',function(){
+            $('#createCollapse').collapse('show');
+        });
+    });
+    
+    $(document).on('click','.container-fluid', function(){
+        $('#createCollapse').collapse('hide');
+    });
+
 
     // Initialize
     $(document).getCard().done(function(data) {
 
         if(data.length == 0) {
 
-            $('#taskTileList').html(
+            $('#taskTileList').parent().html(
                 `<h1 class="no-task-text">
                     No Task yet :(
                 </h1>`
@@ -53,7 +64,7 @@ $(function () {
             $(document).displayTag(data['tags'], true);
             $(document).displayViewer(data['viewers'], true);
             
-            $('#taskModifyModal').find('.modal-content').css('background-color', data['color']);
+            $('#taskModifyModal .card').css('background-color', data['color']);
             $('#taskModifyModal').find('.btn-color').find('i').removeClass('fa fa-check fa-lg');
             $('#taskModifyModal').find(`button[data-value="${data['color']}"] i`).addClass('fa fa-check fa-lg');
         });
@@ -67,16 +78,16 @@ $(function () {
 
         $(document).getCard($(this).attr('data-value')).done(function (data) {
 
-            if(data['session_user']!=data['user_id'])
-                document.getElementById('card-menu').style.visibility = "hidden";
-            else
-                document.getElementById('card-menu').style.visibility = "visible";
-
+            document.getElementById('card-menu').style.visibility = "hidden";
+            if(data['status']== 1)
+                if(data['session_user']==data['user_id'])
+                    document.getElementById('card-menu').style.visibility = "visible";
             $('#taskViewModal').find('.dropdown a').attr('data-value', data['id']);
             $('#taskViewModal').find('form').attr('data-value', data['id']);
             $('#taskViewModal').find('[id="author-name"]').attr('data-content', data['author']);
             $(document).getUser(data['user_id']).done(function(item) {
                 $('#taskViewModal').find('[id="author-avatar"]').attr('src', item['avatar_url']);
+                $('#taskViewModal').find('[id="card-author"]').html(item['first_name'] + ' ' + item['last_name']);
             })
             $('#taskViewModal').find('[id="title"]').html(data['title']);
             $('#taskViewModal').find('[id="description"]').html(data['body'] ? data['body'] : '<small class="text-muted">No Description</small>');
@@ -85,7 +96,7 @@ $(function () {
             $('#taskViewModal').find('[id="countdown"] span').html(data['remaining_days']);
             $('#taskViewModal').find('.task-tag-list').html('');
             $('#taskViewModal').find('.task-actor-list').html('');
-            $('#taskViewModal').find('.modal-content').css('background-color', data['color']);
+            $('#taskViewModal').find('.card').css('background-color', data['color']);
 
             if(data['tags'].length != 0) 
 
@@ -131,7 +142,7 @@ $(function () {
         $(this).find('i').addClass('fa fa-check fa-lg');
         $(this).siblings('.btn-color').find('i').removeClass('fa fa-check fa-lg');
         $(this).siblings('[name="color"]').attr('value', $(this).attr('data-value'));
-        $(this).closest('.task-container').css('background-color', $(this).attr('data-value'));
+        $(this).closest('.card').css('background-color', $(this).attr('data-value'));
     });
 
 

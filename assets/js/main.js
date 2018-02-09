@@ -1,5 +1,8 @@
-const baseUrl = window.location.origin === "http://note.payakapps.com" ? "http://note.payakapps.com/" : "http://localhost/note/";
-var userId = null;
+switch(window.location.origin){
+    case 'http://note.payakapps.com': var baseUrl = 'http://note.payakapps.com/'; break;
+    case 'http://stage.payakapps.com': var baseUrl = 'http://stage.payakapps.com/'; break;
+    default: var baseUrl = 'http://localhost/note/'; break;
+}var userId = null;
 var authorId = null;
 var avatarUrl = null;
 
@@ -118,16 +121,6 @@ function taskBuilder(task, modalDismiss = false) {
 // Task
 $.fn.resetForm = function() {
     
-    // $('#taskModifyModal').find('form')[0].reset();
-    // $('#taskModifyModal').find('.task-actor-list').siblings('input').remove();
-    // $('#taskModifyModal').find('.task-actor-list').find('span.badge').remove();
-    // $('#taskModifyModal').find('.task-tag-list').siblings('input').remove();
-    // $('#taskModifyModal').find('.task-tag-list').find('span.badge').remove();
-    // $('#taskModifyModal').find('.modal-content').css('background-color', '#ffffff');
-    // $('#taskModifyModal').find('.btn-color').find('i').removeClass('fa fa-check fa-lg');
-    // $('#taskModifyModal').find(`button[data-value="#ffffff"] i`).addClass('fa fa-check fa-lg');
-
-    
     $('#personalCreate').find('form')[0].reset();
 
     $('.task-container').find('.task-actor-list').siblings('input').remove();
@@ -137,6 +130,8 @@ $.fn.resetForm = function() {
     $('.task-container').find('.btn-color').find('i').removeClass('fa fa-check fa-lg');
     $('.task-container').find(`button[data-value="#ffffff"] i`).addClass('fa fa-check fa-lg');
     $('.task-container').css('background-color', '#ffffff');
+    $('.task-tile').find('.card').css('background-color', '#ffffff', 'height: auto;');
+    $('.task-container .card').css('background-color', '#ffffff');
 };
 
 
@@ -208,7 +203,7 @@ $.fn.displayCard = function(items, column = 3) {
     var status = [1, 4, 2];
 
     $containers.push($('#taskTileList'));
-    column = 4;
+    column = 3;
 
     colNumber = 12/column;
 
@@ -234,25 +229,18 @@ $.fn.displayCard = function(items, column = 3) {
             if(status[i] == item['status']) {
 
                 $container.prepend(
-                    `<div data-order="${j}" class="col-md-${colNumber}">
-
-                        <div class="task-tile task-view w3-card-2 w3-hover-shadow" 
-                        data-toggle="modal" data-target="#taskViewModal" data-value="${item['id']}" 
-                        draggable="true" ondragstart="drag(event)" 
-                        style="background-color:${item['color']};">
-                            <i class="pin"></i>
-                            <div class="card-header">
-                                <span class="tile-title">
-                                ${item['title']}
-                                </span>
-                            </div>
-                            <div class="container-fluid" >
-                                <div class="row">
-                                    <h3 class="tile-description1">${item['body']}</h3>
+                    `<div data-order="${j}"> 
+                         
+                            <div class="card task-tile task-view" data-toggle="modal" data-target="#taskViewModal" data-value="${item['id']}" style="background-color:${item['color']};">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0">
+                                        ${item['title']}
+                                    </h4>
+                                </div>
+                                <div class="card-body" >
+                                    <p>${item['body']}</p>
                                 </div>
                             </div>
-
-                        </div>
                         
                     </div>`
                 );

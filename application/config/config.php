@@ -23,7 +23,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = ENVIRONMENT === "production" ? 'http://note.payakapps.com/' : 'http://localhost/note/';
+switch(ENVIRONMENT) {
+
+	case 'production':
+		$config['base_url'] = 'http://note.payakapps.com/';
+		break;
+	case 'testing':
+		$config['base_url'] = 'http://stage.payakapps.com/';
+		break;
+	default:
+		$config['base_url'] = 'http://localhost/note/';
+		break;
+}
 
 /*
 |--------------------------------------------------------------------------
