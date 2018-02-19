@@ -9,17 +9,9 @@ $(function () {
     $container = $('#taskTileList')
     column = 4;
 
-    $(document).on('click','#taskCreateForm', function(){
-        var form = document.getElementById("#taskCreateForm");
-        form.addEventListener('focus',function(){
-            $('#createCollapse').collapse('show');
-        });
-    });
-    
-    $(document).on('click','.container-fluid', function(){
+    $(document).on('click','.card-create-pad', function(e) {
         $('#createCollapse').collapse('hide');
     });
-
 
     // Initialize
     $(document).getCard().done(function(data) {

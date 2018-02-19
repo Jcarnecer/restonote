@@ -1,6 +1,9 @@
 <div class="container-fluid">
     <!-- <div class="create-bulletin"> -->
-        <div id="personalCreate" class="task-container w3-card-2 w3-hover-shadow">
+    <div class="row">
+        <div class="card-create-pad col-3"></div>
+        <div class="col-6">
+            <div id="personalCreate" class="task-container w3-card-2 w3-hover-shadow w-100">
 
             <form id="taskCreateForm" method="post">
                 <div class="card">
@@ -21,7 +24,7 @@
                                         <option value="2">Custom</option>
                                         <option value="3">Private</option>
                                     </select>
-        
+
                                     <div class="task-tag-list">
                                         <label class="d-inline">Tags: </label>
                                         <input type="text" class="task-tag d-inline" placeholder="Add Tags"/>
@@ -58,8 +61,12 @@
 
             </form>
 
-        <!-- </div> -->
+            <!-- </div> -->
+            </div>
+        </div>
+        <div class="card-create-pad col-3"></div>
     </div>
+
 
 
     <div class="task-tag-board">
