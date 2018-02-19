@@ -30,18 +30,31 @@ class Card_model extends CI_Model {
 	# Get All card
 	public function get_all($company_id, $status = null) {
 
-		if($status != null)
-			$this->db->select('*')
-					->from('cards')
-					->where(['company_id' => $company_id, 'privacy' => _PUBLIC, 'status' => $status])
-					->or_where(['user_id' => $this->session->user->id, 'privacy' => _PRIVATE OR _CUSTOM, 'status' => $status])
-					->get()->result();
-		else
+		if($status != null){
+			$where = '(company_id = \'' . $company_id 
+					. '\' AND privacy = \'' . _PUBLIC 
+					. '\' AND status = \'' . $status . '\') OR '
+					. '(user_id = \'' . $this->session->user->id
+					. '\' AND (privacy = \'' . _PRIVATE 
+					. '\' OR privacy = \'' . _CUSTOM
+					. '\') AND status = \'' . $status . '\')';
 			$cards = $this->db->select('*')
 					->from('cards')
-					->where(['company_id' => $company_id, 'privacy' => _PUBLIC])
-					->or_where(['user_id' => $this->session->user->id, 'privacy' => _PRIVATE OR _CUSTOM])
+					->where($where)
 					->get()->result();
+		}
+		else{
+			$where = '(company_id = \'' . $company_id 
+					. '\' AND privacy = \'' . _PUBLIC . '\') OR '
+					. '(user_id = \'' . $this->session->user->id
+					. '\' AND (privacy = \'' . _PRIVATE 
+					. '\' OR privacy = \'' . _CUSTOM
+					. '\'))';
+			$cards = $this->db->select('*')
+					->from('cards')
+					->where($where)
+					->get()->result();
+		}
 
 		foreach ($cards as $card) {
 

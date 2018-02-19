@@ -18,7 +18,7 @@ $(function () {
 
         if(data.length == 0) {
 
-            $('#taskTileList').html(
+            $('#taskTileList').parent().html(
                 `<h1 class="no-task-text">
                     No Task yet :(
                 </h1>`

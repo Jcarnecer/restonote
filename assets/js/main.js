@@ -1,5 +1,8 @@
-const baseUrl = window.location.origin === "http://note.payakapps.com" ? "http://note.payakapps.com/" : "http://localhost/note/";
-var userId = null;
+switch(window.location.origin){
+    case 'http://note.payakapps.com': var baseUrl = 'http://note.payakapps.com/'; break;
+    case 'http://stage.payakapps.com': var baseUrl = 'http://stage.payakapps.com/'; break;
+    default: var baseUrl = 'http://localhost/note/'; break;
+}var userId = null;
 var authorId = null;
 var avatarUrl = null;
 
