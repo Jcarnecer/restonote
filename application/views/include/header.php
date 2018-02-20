@@ -31,7 +31,12 @@
 
             <ul class="sidebar-menu">		
 
-                
+                <li class="">
+                    <a class="font-weight-bold text-warning" href="#tutorialModal" data-toggle="modal">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                            <span>Get Started</span>
+                    </a>
+                </li>
 
                 <li class="">
                     <a class="task-create" href="#searchTaskModal" data-toggle="modal">
