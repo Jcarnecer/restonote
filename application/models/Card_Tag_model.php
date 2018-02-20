@@ -15,13 +15,13 @@ class Card_Tag_model extends CI_Model {
 
 	public function insert($id, $updated_tags) {
 		
-		$tags = array_column($this->db->get('tags')->result_array(), 'name');
+		$tags = array_column($this->db->get('kb_tags')->result_array(), 'name');
 
 		foreach($updated_tags as $updated_tag) {
 			
 			if(!in_array($updated_tag, $tags)) {
 			
-				$this->db->insert('tags', [
+				$this->db->insert('kb_tags', [
 					'name' => $updated_tag
 				]);
 			}
