@@ -60,7 +60,8 @@ $(function () {
             $('#taskModifyModal').find('[name="body"]').val(data['body']);
             $('#taskModifyModal').find('[name="date"]').val(data['due_date']);
             $('#taskModifyModal').find('[name="color"]').val(data['color']);
-
+            $('#taskModifyModal').find('[name="privacy"]').val(data['privacy']);
+            console.log(data);
             $(document).displayTag(data['tags'], true);
             $(document).displayViewer(data['viewers'], true);
             
