@@ -14,7 +14,7 @@
                             <hr> 
                             <div class="form-group">
                                 <label>Privacy: </label>
-                                <select name="privacy" form="taskCreateForm">
+                                <select name="privacy">
                                     <option value="1">Public</option>
                                     <option value="2">Custom</option>
                                     <option value="3">Private</option>

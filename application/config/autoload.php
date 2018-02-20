@@ -135,7 +135,6 @@ $autoload['language'] = array();
 $autoload['model'] = [
 	'Task_model' => 'task_model', 
 	'Team_model' => 'team_model', 
-	'Tag_model' => 'tag_model', 
 	'User_Model' => 'user_model', 
 	'Card_model' => 'card_model', 
 	'Card_Tag_model' => 'card_tag_model'];
