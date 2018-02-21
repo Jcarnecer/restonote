@@ -126,3 +126,4 @@ defined('_CUSTOM')		OR define('_CUSTOM', 2);
 defined('_PRIVATE')		OR define('_PRIVATE', 3);
 
 define("LOGIN_URL", ENVIRONMENT === "production" ? "http://payakapps.com/users/login" : "http://localhost/main/users/login");
+define('LOGOUT_URL', ENVIRONMENT === "development" ? "http://localhost/main/users/logout" : "http://payakapps.com/users/logout");

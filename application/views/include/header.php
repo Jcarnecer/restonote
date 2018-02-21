@@ -46,7 +46,7 @@
                 </li>
                 
                 <li class="">
-                    <a class="" href="http://localhost/main/users/logout">
+                    <a class="" href="<?= LOGOUT_URL ?>">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         <span>Logout</span>
                     </a>
