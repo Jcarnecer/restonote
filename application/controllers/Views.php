@@ -26,6 +26,7 @@ class Views extends CI_Controller {
 
 		$this->load->view('include/header', $data);
 		$this->load->view('include/modal', $data);
+		$this->load->view('include/tutorial', $data);
 		$this->load->view('cards/index', $data);
 		$this->load->view('include/footer', $data);
 	}

@@ -32,7 +32,12 @@
 
             <ul class="sidebar-menu">		
 
-                
+                <li class="">
+                    <a class="font-weight-bold text-warning" href="#tutorialModal" data-toggle="modal">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                            <span>Get Started</span>
+                    </a>
+                </li>
 
                 <li class="">
                     <a class="task-create" href="#searchTaskModal" data-toggle="modal">
@@ -42,7 +47,7 @@
                 </li>
                 
                 <li class="">
-                    <a class="" href="http://localhost/main/users/logout">
+                    <a class="" href="<?= LOGOUT_URL ?>">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         <span>Logout</span>
                     </a>
