@@ -8,7 +8,7 @@
                             <img src="<?= base_url('assets/tutorial/welcome.png') ?>" alt="Sidebar" class="rounded-0 card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">Welcome PayakApps' Bulletin Board</h5>
-                                <p class="card-text">This is where all the important stuffs are!</p>
+                                <p class="card-text">This is where all the important things are!</p>
                             </div>
                         </div>
                     </div>
