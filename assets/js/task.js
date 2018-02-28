@@ -20,7 +20,7 @@ $(function () {
 
             $('#taskTileList').parent().html(
                 `<h1 class="no-task-text">
-                    No Task yet :(
+                    No Task yet
                 </h1>`
             );
         } else {
