@@ -32,7 +32,7 @@ switch(ENVIRONMENT) {
 		$config['base_url'] = 'http://stage.payakapps.com/';
 		break;
 	default:
-		$config['base_url'] = 'http://localhost/note/';
+		$config['base_url'] = 'http://localhost/restonote/';
 		break;
 }
 

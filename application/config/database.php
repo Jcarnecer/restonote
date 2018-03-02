@@ -7,7 +7,7 @@ $query_builder = TRUE;
 if (ENVIRONMENT === "production" || ENVIRONMENT === "testing") {
 	$db['default'] = array(
 		'dsn'	=> '',
-		'hostname' => 'smallappsdatabase.ct6zpeav3tx4.ap-southeast-1.rds.amazonaws.com',
+		'hostname' => 'restoapp.ct6zpeav3tx4.ap-southeast-1.rds.amazonaws.com',
 		'username' => 'astrid',
 		'password' => 'astridtechnologies',
 		'database' => 'small_apps',
@@ -32,7 +32,7 @@ if (ENVIRONMENT === "production" || ENVIRONMENT === "testing") {
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => '',
-		'database' => 'small_apps',
+		'database' => 'restoapp',
 		'dbdriver' => 'mysqli',
 		'dbprefix' => '',
 		'pconnect' => FALSE,
