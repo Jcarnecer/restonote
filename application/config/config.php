@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 switch(ENVIRONMENT) {
 
 	case 'production':
-		$config['base_url'] = 'http://note.payakapps.com/';
+		$config['base_url'] = 'http://note.restoshift.com/';
 		break;
 	case 'testing':
 		$config['base_url'] = 'http://stage.payakapps.com/';
@@ -412,7 +412,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 |
 */
 $config['cookie_prefix']	= '';
-$config['cookie_domain']	= '.payakapps.com';
+$config['cookie_domain']	= '.restoshift.com';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;

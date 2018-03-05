@@ -1,5 +1,5 @@
 switch(window.location.origin){
-    case 'http://note.payakapps.com': var baseUrl = 'http://note.payakapps.com/'; break;
+    case 'http://note.restoshift.com': var baseUrl = 'http://note.restoshift.com/'; break;
     case 'http://stage.payakapps.com': var baseUrl = 'http://stage.payakapps.com/'; break;
     default: var baseUrl = 'http://localhost/restonote/'; break;
 }var userId = null;
